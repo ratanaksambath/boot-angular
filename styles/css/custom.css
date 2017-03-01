@@ -1,0 +1,25 @@
+.test-bot .chat-body{
+  width: 100%;
+  background:
+    url("../../styles/img/avatars/testing.png") no-repeat
+  , url("../../styles/img/avatars/tester.png") no-repeat;
+  /*background-repeat: no-repeat, no-repeat, no-repeat;*/
+  background-position: right, left;
+  
+}
+.test-bot .chat-body li.message img {
+    display: inline-block;
+    border-radius: 50%;
+    width: 50px;
+    border: 5px solid rgba(0,0,0,.14);
+    box-sizing: content-box;
+    border-left: 4px solid #fff;
+    position: absolute;
+}
+.test-bot .chat-body li.message {
+    max-width: 590px;
+    left: 27%;
+    display: block;
+    position: relative;
+    margin: 20px 20px 0;
+}

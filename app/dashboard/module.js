@@ -19,6 +19,7 @@ angular.module('app.dashboard', [
                 title: 'Dashboard'
             }
         })
+      
         .state('app.dashboard-social', {
             url: '/dashboard-social',
             views: {
@@ -28,6 +29,17 @@ angular.module('app.dashboard', [
             },
             data:{
                 title: 'Dashboard Social'
+            }
+        })
+        .state('app.dashboard-bot', {
+            url: '/dashboard-bot',
+            views: {
+                "content@app": {
+                    templateUrl: 'app/dashboard/dashboard-bot.html'
+                }
+            },
+            data:{
+                title: 'Dashboard Bot'
             }
         });
 });

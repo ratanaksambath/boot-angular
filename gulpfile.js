@@ -30,12 +30,15 @@ var source = {
             // other js files [controllers, services, etc.]
             'app/**/!(module)*.js'
         ],
-        tpl: ['app/**/*.tpl.html','app/**/*.html']
-    }
+        tpl: ['app/**/*.tpl.html','app/**/*.html'],
+        
+    },
+    css: ['app/**/*.css']
 };
 
 var destinations = {
-    js: 'build'
+    js: 'build',
+    css: 'styles/css'
 };
 
 
@@ -60,10 +63,19 @@ gulp.task('html',function(){
     return es.merge(gulp.src(source.js.src) , getTemplateStream())
         .pipe(concat('app.js'))
         .pipe(gulp.dest(destinations.js))
-})
+});
+gulp.task('css',function(){
+    gulp.src(source.css)
+    .pipe(connect.reload());
+    return gulp.src(source.css)
+    .pipe(concat('custom.css'))
+    .pipe(gulp.dest(destinations.css));
+
+});
 gulp.task('watch', function(){
     gulp.watch(source.js.src, ['js']);    
     gulp.watch(source.js.tpl, ['html']);
+    gulp.watch(source.css, ['css']);
 });
 
 gulp.task('connect', function() {
@@ -94,7 +106,7 @@ gulp.task('vendor', function(){
 });
 
 gulp.task('prod', ['vendor', 'build']);
-gulp.task('dev', ['vendor', 'js', 'watch', 'connect']);
+gulp.task('dev', ['vendor', 'js','css', 'watch', 'connect']);
 // gulp.task('default', ['dev']);
 
 var swallowError = function(error){
