@@ -22,6 +22,10 @@ angular.module('app.chat').factory('ChatApi', function ($q, $rootScope, User, $h
                 date: new Date()
             };
             this.messages.push(message);
+            var result = JSON.stringify(message);
+            $http.post(APP_CONFIG.apiRootUrl+ '/chat.json',result).then(function(res){
+                console.log("success");
+            })
         }
     };
 

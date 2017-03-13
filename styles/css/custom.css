@@ -1,25 +1,65 @@
-.test-bot .chat-body{
-  width: 100%;
-  background:
-    url("../../styles/img/avatars/testing.png") no-repeat
-  , url("../../styles/img/avatars/tester.png") no-repeat;
-  /*background-repeat: no-repeat, no-repeat, no-repeat;*/
-  background-position: right, left;
-  
+
+.testing-bot{
+  height:auto;
+  background:url("../../styles/img/avatars/testing.png") no-repeat;
+  background-position: left;
+  background-size:initial;
 }
+.yellow.accent-1 {
+  background-color: #febd31;
+}
+.green.accent-1{
+  background-color:#3ac64e;
+}
+.bot-profile{
+  display:inline-block;
+  width:141px;
+  height:174px;
+}
+.clearfix {
+  clear: both;
+}
+.center-content{
+  text-align:center;
+}
+.card-panel {
+  transition: box-shadow .25s;
+  padding: 20px;
+  margin: 0.5rem 0 1rem 0;
+  border-radius: 2px;
+  background-color: #fff;
+  font-size: 15px;
+  color: darkblue;
+  font-weight: 300;
+}
+.left-align {
+  text-align: left;
+}
+
+.left {
+  float: left;
+}
+.right{
+  float:right;
+}
+
+
 .test-bot .chat-body li.message img {
-    display: inline-block;
-    border-radius: 50%;
-    width: 50px;
-    border: 5px solid rgba(0,0,0,.14);
-    box-sizing: content-box;
-    border-left: 4px solid #fff;
-    position: absolute;
+  display: inline-block;
+  border-radius: 50%;
+  width: 50px;
+  border: 5px solid rgba(0,0,0,.14);
+  box-sizing: content-box;
+  border-left: 4px solid #fff;
+  position: absolute;
 }
 .test-bot .chat-body li.message {
-    max-width: 590px;
-    left: 27%;
-    display: block;
-    position: relative;
-    margin: 20px 20px 0;
+  max-width: 590px;
+  height: 70px;
+  left: 27%;
+  display: block;
+  border-radius: 10px;
+  position: relative;
+  margin: 20px 20px 0;
 }
+

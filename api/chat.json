@@ -28,7 +28,16 @@
                 "status": "Online"
             },
             "date": "2014-10-01T21:09:08.388Z",
-            "body": " Haha! Yeah I know what you\n mean. \n Thanks for the file Sadi! <i class=\"fa fa-smile-o txt-color-orange\"></i> "
+            "body": " Hahahaha! Yeah I know what you\n mean. \n Thanks for the file Sadi! <i class=\"fa fa-smile-o txt-color-orange\"></i> "
+        },
+        {
+            "user": {
+                "username": "John Doe",
+                "picture": "styles/img/avatars/sunny.png",
+                "status": "Online"
+            },
+            "date": "2014-10-01T21:09:08.388Z",
+            "body": " Hahahaha! Yeah I know what you\n mean. \n Thanks for the file Sadi! <i class=\"fa fa-smile-o txt-color-orange\"></i> "
         }
 
     ]

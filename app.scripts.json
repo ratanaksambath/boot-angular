@@ -33,7 +33,10 @@
       "flot-tooltip",
       "datatables",
       "angular-datatables",
-      "angular-datatables.bootstrap"
+      "angular-datatables.bootstrap",
+      "materialize",
+      "api-ai-javascript-client"
+
 
     ],
     "vendor.ui": [
@@ -140,7 +143,7 @@
     "nouislider": "bower_components/nouislider/distribute/jquery.nouislider.min.js",
     "ionslider": "bower_components/ion.rangeSlider/js/ion.rangeSlider.min.js",
     "bootstrap-duallistbox": "bower_components/bootstrap-duallistbox/dist/jquery.bootstrap-duallistbox.min.js",
-
+    "materialize":"bower_components/materialize/dist/js/materialize.min.js",
     "jquery-knob": "bower_components/jquery-knob/dist/jquery.knob.min.js",
     "bootstrap-slider": "bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js",
     "bootstrap-tagsinput": "bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js",
@@ -157,6 +160,7 @@
     "magnific-popup": "bower_components/magnific-popup/dist/jquery.magnific-popup.js",
     "fullcalendar": "smartadmin-plugin/fullcalendar/jquery.fullcalendar.min.js",
     "smartwidgets": "smartadmin-plugin/smartwidgets/jarvis.widget.min.js",
-    "notification": "smartadmin-plugin/notification/SmartNotification.min.js"
+    "notification": "smartadmin-plugin/notification/SmartNotification.min.js",
+    "api-ai-javascript-client": "node_modules/api-ai-javascript/ApiAiClient.js"
   }
 }

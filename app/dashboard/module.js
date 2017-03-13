@@ -35,6 +35,7 @@ angular.module('app.dashboard', [
             url: '/dashboard-bot',
             views: {
                 "content@app": {
+                    controller: 'botConsCtrl',
                     templateUrl: 'app/dashboard/dashboard-bot.html'
                 }
             },
