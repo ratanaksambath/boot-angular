@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.dashboard').controller('botConsCtrl',function($scope,$window,$interval){
-
+  $scope.testDuration = 0;
   var ENTER_KEY_CODE = 13;
   var testerQueryInput,testingQueryInput, resultDiv, accessTokenInputSmartBot, accessTokenInputGreeterBot,startEngine,stopEngine;
 
@@ -127,6 +127,8 @@ function streamClientOnResults(results) {
     node.className = "clearfix left-align left card-panel yellow accent-1";
     node.innerHTML = query;
     resultDiv.appendChild(node);
+    scrollBottom();
+
   }
 
   function createResponseNode() {
@@ -156,7 +158,13 @@ function streamClientOnResults(results) {
     }
 
     node.addEventListener("click", speakNode);
-    speakNode();
+    scrollBottom();
+
+  }
+  function scrollBottom(){
+    $scope.testDuration += 1;
+    var chatElem = document.getElementById("chat-body");
+    chatElem.scrollTop = chatElem.scrollHeight;
   }
 
   function setResponseJSON(response) {
@@ -258,7 +266,7 @@ function streamClientOnResults(results) {
 
     // download json file on click
   function downloadLog(){
-    var logs = $("#result").children();
+    var logs = $("#chat-body").children();
     $.each(logs,function(k,v){
       var grabElement = $(v);
       if(grabElement.hasClass('right')==true){

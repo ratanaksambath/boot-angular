@@ -63,3 +63,17 @@
   margin: 20px 20px 0;
 }
 
+.txt-color-blueDark.title {
+  font-size: 60px;
+  font-weight: 500;
+}
+.textarea-controls.play-button-controls {
+  margin-top: 10px;
+  border-top-width: 1px;
+  border-top-style: ridge;
+  padding: 45px !important;
+  height: 121px !important;
+}
+.textarea-controls.play-button-controls a{
+  color: #2196f3; 
+}
