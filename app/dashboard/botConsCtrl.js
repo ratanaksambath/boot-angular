@@ -4,7 +4,9 @@ angular.module('app.dashboard').controller('botConsCtrl',function($scope,$window
   $scope.testDuration = 0;
   var ENTER_KEY_CODE = 13;
   var testerQueryInput,testingQueryInput, resultDiv, accessTokenInputSmartBot, accessTokenInputGreeterBot,startEngine,stopEngine;
-
+  var hello = function(){
+    console.log("hello");
+  };
   var initApi = function(){
     testerQueryInput = document.getElementById("q_tester");
     testingQueryInput = document.getElementById("q_testing");
@@ -39,13 +41,15 @@ var clientSmart,clientGreeter, streamClientSmart,streamClientGreeter;
     streamClientGreeter.close();
   }
 
-  clientSmart = new ApiAi.ApiAiClient({accessToken: token, streamClientClass: ApiAi.ApiAiStreamClient});
-  clientGreeter = new ApiAi.ApiAiClient({accessToken: token1, streamClientClass: ApiAi.ApiAiStreamClient});
+  clientSmart = new ApiAi.ApiAiClient({accessToken: token});
+  clientGreeter = new ApiAi.ApiAiClient({accessToken: token1});
   
-  streamClientSmart = clientSmart.createStreamClient();
-  streamClientGreeter = clientGreeter.createStreamClient();
-  streamClientSmart.init();
-  streamClientGreeter.init();
+  // option to have audio mic on within the browser
+
+  // streamClientSmart = clientSmart.createStreamClient();
+  // streamClientGreeter = clientGreeter.createStreamClient();
+  // streamClientSmart.init();
+  // streamClientGreeter.init();
 
   // streamClient.onInit = function() {
   //   console.log("> ON INIT use direct assignment property");
@@ -95,13 +99,13 @@ function tts(text) {
   return clientSmart.ttsRequest(text);
 }
 
-function startMic() {
-  streamClient.startListening();
-}
+// function startMic() {
+//   streamClient.startListening();
+// }
 
-function stopMic() {
-  streamClient.stopListening();
-}
+// function stopMic() {
+//   streamClient.stopListening();
+// }
 
 function streamClientOnResults(results) {
   console.log("> ON RESULTS", results);
