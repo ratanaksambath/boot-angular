@@ -52,11 +52,9 @@
 
 
               <span class="textarea-controls">
-                <button class="btn btn-sm btn-primary pull-right">
+                <button ng-click="testerInput()" class="btn btn-sm btn-primary pull-right">
                   Reply
-                </button> <span class="pull-right smart-form" style="margin-top: 3px; margin-right: 10px;"> <label class="checkbox pull-right">Press <strong> ENTER </strong> to send </label> </span> 
-              </span>
-
+                </button> 
               </div>
           </div>
           </div>
@@ -66,7 +64,7 @@
         <div class="panel panel-default">
           <div class="panel-body status">
             <div class="who clearfix">
-              <h4 style="text-align: center;">Test Duration: {{testDuration}} seconds</h4>
+              <h4 style="text-align: center;">Test Duration: {{testDuration}} seconds , Test Turn: {{testTurn}}</h4>
             </div>
 
             <div id="chat-body" class="chat-body custom-scroll">
@@ -110,9 +108,6 @@
                 <a id="start_engine" href="javascript:void(0);" class="pull-left">
                   <i class="fa fa-play fa-fw fa-fh fa-3x"></i>
                 </a> 
-                <a id="pause_engine" href="javascript:void(0);" class="pull-left">
-                  <i class="fa fa-pause fa-fw fa-fh fa-3x"></i>
-                </a>
                 <a id="stop_engine" href="javascript:void(0);" class="pull-left">
                   <i class="fa fa-stop fa-fw fa-fh fa-3x"></i>
                 </a> 
@@ -153,9 +148,9 @@
 
 
               <span class="textarea-controls">
-                <button ng-click="hello()" class="btn btn-sm btn-primary pull-right">
+                <button ng-click="testingInput()" class="btn btn-sm btn-primary pull-right">
                   Reply
-                </button> <span class="pull-right smart-form" style="margin-top: 3px; margin-right: 10px;"> <label class="checkbox pull-right">Press <strong> ENTER </strong> to send </label> </span> 
+                </button>  
               </span>
 
               </div>
