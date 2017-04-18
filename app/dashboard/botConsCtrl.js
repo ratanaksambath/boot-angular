@@ -3,6 +3,8 @@
 angular.module('app.dashboard').controller('botConsCtrl',function($scope,$window,$interval){
   $scope.testDuration = 0;
   $scope.testTurn = 0;
+  $scope.testingCounts = 0;
+  $scope.testerCounts = 0;
   var ENTER_KEY_CODE = 13;
   var resultDiv, accessTokenInputSmartBot, accessTokenInputGreeterBot,startEngine,stopEngine;
   
@@ -314,6 +316,7 @@ function streamClientOnResults(results) {
 
 
     $scope.testerInput = function(){
+    $scope.testerCounts += 1;
     var getInput = document.getElementById("q_tester");
     var query = $(getInput)[0].value;
     createQueryNode(query);
@@ -335,6 +338,7 @@ function streamClientOnResults(results) {
 
   };
   $scope.testingInput = function(){
+    $scope.testingCounts += 1;
     var getInput = document.getElementById("q_testing");
     var query = $(getInput)[0].value;
     var responseNode = createResponseNode();
