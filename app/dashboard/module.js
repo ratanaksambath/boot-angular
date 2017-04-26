@@ -2,7 +2,8 @@
 
 angular.module('app.dashboard', [
     'ui.router',
-    'ngResource'
+    'ngResource',
+    'ngMaterial'
 ])
 
 .config(function ($stateProvider) {
@@ -11,8 +12,20 @@ angular.module('app.dashboard', [
             url: '/dashboard',
             views: {
                 "content@app": {
-                    controller: 'DashboardCtrl',
-                    templateUrl: 'app/dashboard/dashboard.html'
+                    controller: 'botConsCtrl',
+                    templateUrl: 'app/dashboard/dashboard-bot.html'
+                }
+            },
+            data:{
+                title: 'Dashboard'
+            }
+        })
+        .state('app.dashboard-analytic', {
+            url: '/dashboard-analytic',
+            views: {
+                "content@app": {
+                    controller: 'DashboardCtrlAnalytic',
+                    templateUrl: 'app/dashboard/dashboard-analytic.html'
                 }
             },
             data:{
@@ -30,17 +43,17 @@ angular.module('app.dashboard', [
             data:{
                 title: 'Dashboard Social'
             }
-        })
-        .state('app.dashboard-bot', {
-            url: '/dashboard-bot',
-            views: {
-                "content@app": {
-                    controller: 'botConsCtrl',
-                    templateUrl: 'app/dashboard/dashboard-bot.html'
-                }
-            },
-            data:{
-                title: 'Dashboard Bot'
-            }
         });
+        // .state('app.dashboard-bot', {
+        //     url: '/dashboard-bot',
+        //     views: {
+        //         "content@app": {
+        //             controller: 'botConsCtrl',
+        //             templateUrl: 'app/dashboard/dashboard-bot.html'
+        //         }
+        //     },
+        //     data:{
+        //         title: 'Dashboard Bot'
+        //     }
+        // });
 });

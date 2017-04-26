@@ -267,7 +267,6 @@ if (appConfig.voice_command) {
 }
 
 appConfig.apiRootUrl = 'api';
-
 window.appConfig = appConfig;
 
 /*

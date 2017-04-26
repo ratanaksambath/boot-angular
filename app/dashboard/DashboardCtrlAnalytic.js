@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.dashboard').controller('DashboardCtrl', function ($scope, $interval, CalendarEvent) {
+angular.module('app.dashboard').controller('DashboardCtrlAnalytic', function ($scope, $interval, CalendarEvent) {
 
     // Live Feeds Widget Data And Display Controls
     // Live Stats Tab

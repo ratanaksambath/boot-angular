@@ -1,15 +1,20 @@
 'use strict';
 
-angular.module('app.dashboard').controller('botConsCtrl',function($scope,$window,$interval){
+angular.module('app.dashboard')
+.controller('botConsCtrl',function($scope,$window,$interval){
   $scope.testDuration = 0;
   $scope.testTurn = 0;
   $scope.testingCounts = 0;
   $scope.testerCounts = 0;
+  $scope.rating1 = 3;
+  $scope.rating2 = 2;
+  $scope.rating3 = 4;
   var ENTER_KEY_CODE = 13;
-  var resultDiv, accessTokenInputSmartBot, accessTokenInputGreeterBot,startEngine,stopEngine;
+  var chatLayout,resultDiv, accessTokenInputSmartBot, accessTokenInputGreeterBot,startEngine,stopEngine;
   
   var initApi = function(){
     resultDiv = document.getElementById("chat-body");
+    chatLayout = $(".chat-body");
     startEngine = document.getElementById("start_engine");
     stopEngine = document.getElementById("stop_engine");
 
@@ -19,6 +24,12 @@ angular.module('app.dashboard').controller('botConsCtrl',function($scope,$window
     // accessTokenInputGreeterBot = document.getElementById("access_token_greeter_bot");
 
     // hardcode access token to api ai
+
+    var myHeight = $window.innerHeight;
+    var chatBodyHeight = (myHeight * 60)/100;
+    chatLayout.css("height",chatBodyHeight);
+    console.log(resultDiv);
+
 
     accessTokenInputSmartBot = '2444810482424c27a4b9fd6d14f24afc';
     accessTokenInputGreeterBot = '2aba49304ba94fe29db43383ef5d6b7c';
@@ -224,9 +235,8 @@ function streamClientOnResults(results) {
       setResponseOnNode("Something goes wrong", responseNode);
     });
 
-
-
-    myWatch = $interval(watchMe, 1000);
+    console.log($scope.rating1);
+    myWatch = $interval(watchMe, ($scope.rating1*1000-500));
     function watchMe() {
       var lastChild = $("#chat-body").children().last();
       newBox = messageBox.children().length;

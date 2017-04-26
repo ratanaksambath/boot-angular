@@ -67,14 +67,10 @@
     font-size: 60px;
     font-weight: 500;
 }
-.textarea-controls.play-button-controls {
-  margin-top: 10px;
-  border-top-width: 1px;
-  border-top-style: ridge;
-  padding: 45px !important;
+.textarea-controls.control-board {
   height: 121px !important;
 }
-.textarea-controls.play-button-controls a{
+.textarea-controls.control-board a{
   color: #2196f3; 
 }
 #header{
@@ -89,4 +85,30 @@
     margin: 5px;
     color: white;
     font-weight: 500;
+}
+.vertical-divider{
+  border-right: 1px dashed #333;
+}
+.md-ripple-container{
+  display:none;
+}
+
+.test-controller {
+  position: fixed;
+  z-index: 901;
+  height: 145px;
+  border: 1px solid #CECECE;
+  width: 98%;
+  display: block;
+  bottom: 10px;
+  background-color: #f9f9f9;
+}
+.flex-10, .layout-row>.flex-10 {
+    max-width: 20%;
+}
+md-slider{
+  margin-right:20px;
+}
+#demo-setting{
+  display:none;
 }
