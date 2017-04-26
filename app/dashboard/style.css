@@ -8,8 +8,11 @@
 .yellow.accent-1 {
   background-color: #febd31;
 }
+.pink-panter.accent-1{
+  background-color: #ff4081;
+}
 .green.accent-1{
-  background-color:#3ac64e;
+  background-color: #3ac64e;
 }
 .bot-profile{
   display:inline-block;
@@ -96,12 +99,11 @@
 .test-controller {
   position: fixed;
   z-index: 901;
-  height: 145px;
+  height: 85px;
   border: 1px solid #CECECE;
   width: 98%;
   display: block;
   bottom: 10px;
-  background-color: #f9f9f9;
 }
 .flex-10, .layout-row>.flex-10 {
     max-width: 20%;
@@ -111,4 +113,7 @@ md-slider{
 }
 #demo-setting{
   display:none;
+}
+.chat-footer{
+  background:none;
 }

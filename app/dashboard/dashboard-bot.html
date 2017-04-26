@@ -148,59 +148,39 @@
     <div class="test-controller">
       <div class="row">
         <div class="col-lg-3">
-          <div class="chat-footer">
-
-
-            <div class="textarea-div">
-
-              <div class="typearea">
-                <textarea placeholder="Write a reply..." id="q_tester" class="custom-scroll"></textarea>
-              </div>
-
-            </div>
-
-
-            <span class="textarea-controls">
-              <h5 class="pull-left ng-binding">User Input: 0</h5>
-              <button ng-click="testerInput()" class="btn btn-sm btn-primary pull-right">
-                Reply
-              </button> 
-            </span></div>
-          </div>
-          <div class="col-lg-6" style="text-align: center;margin-top: 30px;">
-            <md-button id ="start_engine" class="md-fab" aria-label="Play">
-              <md-tooltip md-visible="demo.showTooltip">Play</md-tooltip>
-              <md-icon class="fa fa-play fa-2x"></md-icon>
-            </md-button>
-            <md-button id ="stop_engine" class="md-fab" aria-label="Stop">
-              <md-tooltip md-visible="demo.showTooltip">Stop and Reset</md-tooltip>
-              <md-icon class="fa fa-stop fa-2x"></md-icon>
-            </md-button>
-          </div>
-          <div class="col-lg-3">
             <div class="chat-footer">
-
-
-                <div class="textarea-div">
-
-                  <div class="typearea">
-                    <textarea placeholder="Write a reply..." id="q_testing" class="custom-scroll"></textarea>
-                  </div>
-
-                </div>
-
-
-                <span class="textarea-controls">
-                  
-                  <button ng-click="testingInput()" class="btn btn-sm btn-primary pull-right">
-                    Reply
-                  </button>  
-                </span>
-
+              <div class="textarea-div">
+                <section>
+                  <label class="input" style="width:100%;margin:0px">
+                    <input style="width:100%" type="text" class="input-lg" placeholder="Write a reply..." id="q_tester">
+                  </label>
+                </section>
               </div>
+            </div>
+          </div>
+        <div class="col-lg-6" style="text-align: center;">
+          <md-button id ="start_engine" class="md-fab" aria-label="Play">
+            <md-tooltip md-visible="demo.showTooltip">Play</md-tooltip>
+            <md-icon class="fa fa-play fa-2x"></md-icon>
+          </md-button>
+          <md-button id ="stop_engine" class="md-fab" aria-label="Stop">
+            <md-tooltip md-visible="demo.showTooltip">Stop and Reset</md-tooltip>
+            <md-icon class="fa fa-stop fa-2x"></md-icon>
+          </md-button>
+        </div>
+        <div class="col-lg-3">
+          <div class="chat-footer">
+            <div class="textarea-div">
+              <section>
+                <label class="input" style="width:100%;margin:0px">
+                  <input style="width:100%" type="text" class="input-lg" placeholder="Write a reply..." id="q_testing">
+                </label>
+              </section>
+            </div>
           </div>
         </div>
       </div>
+    </div>
 
 
     </div>
