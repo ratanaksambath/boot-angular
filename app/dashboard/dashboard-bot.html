@@ -23,9 +23,11 @@
       <div class="col-lg-3 ">
         <div class="panel panel-default">
           <div class="panel-body status">
-            <div class="who clearfix">
-              <h4 style="text-align: center;">Title</h4>
-            </div>
+            <md-select ng-model="weapon" placeholder="Weapon" class="md-no-underline">
+              <md-option value="axe">Axe</md-option>
+              <md-option value="sword">Sword</md-option>
+              <md-option value="wand">Wand</md-option>
+            </md-select>
 
             <div class="chat-body ">
               <div class="row">
@@ -51,7 +53,28 @@
         <div class="panel panel-default">
           <div class="panel-body status">
             <div class="who clearfix">
-              <h4 style="text-align: center;">Test Duration: {{testDuration}} seconds , Test Turn: {{testTurn}}</h4>
+              <div class="row">
+                <div class="col-lg-4">
+                  <h4>Round 1 / Dialogue 1</h4>
+                </div>
+                <div class="col-lg-4" style="display:flex;">
+                  <div class="setting-mod">
+                    <h4>Turn:</h4>
+                  </div>
+                  <div style="display:flex;width:75%;">
+                    <svg>
+                      <circle id="circle_tester" />
+                    </svg>
+                    <p class="turn-number">{{testTurn}}</p>
+                    <svg>
+                      <circle id="circle_testing" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <h4>Duration: {{testDuration}}</h4>
+                </div>
+              </div>
             </div>
 
             <div id="chat-body" class="chat-body custom-scroll">
@@ -113,9 +136,11 @@
     <div class="col-lg-3 ">
       <div class="panel panel-default">
         <div class="panel-body status">
-          <div class="who clearfix">
-            <h4 style="text-align: center;">Title</h4>
-          </div>
+          <md-select ng-model="weapon" placeholder="Weapon" class="md-no-underline">
+            <md-option value="axe">Axe</md-option>
+            <md-option value="sword">Sword</md-option>
+            <md-option value="wand">Wand</md-option>
+          </md-select>
           <div class="chat-body custom-scroll">
             <div class="row">
               <div class="col center-content">

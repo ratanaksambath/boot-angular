@@ -1,119 +1,18 @@
-
-.testing-bot{
-  height:auto;
-  background:url("../../styles/img/avatars/testing.png") no-repeat;
-  background-position: left;
-  background-size:initial;
-}
-.yellow.accent-1 {
-  background-color: #febd31;
-}
-.pink-panter.accent-1{
-  background-color: #ff4081;
-}
-.green.accent-1{
-  background-color: #3ac64e;
-}
-.bot-profile{
-  display:inline-block;
-  width:141px;
-  height:174px;
-}
-.clearfix {
-  clear: both;
-}
-.center-content{
-  text-align:center;
-}
-.card-panel {
-  transition: box-shadow .25s;
-  padding: 20px;
-  margin: 0.5rem 0 1rem 0;
-  border-radius: 2px;
-  background-color: #fff;
-  font-size: 15px;
-  color: darkblue;
-  font-weight: 300;
-}
-.left-align {
-  text-align: left;
-}
-
-.left {
-  float: left;
-}
-.right{
-  float:right;
-}
-
-
-.test-bot .chat-body li.message img {
-  display: inline-block;
-  border-radius: 50%;
-  width: 50px;
-  border: 5px solid rgba(0,0,0,.14);
-  box-sizing: content-box;
-  border-left: 4px solid #fff;
-  position: absolute;
-}
-.test-bot .chat-body li.message {
-  max-width: 590px;
-  height: 70px;
-  left: 27%;
-  display: block;
-  border-radius: 10px;
-  position: relative;
-  margin: 20px 20px 0;
-}
-
-.txt-color-blueDark.title {
-    font-size: 60px;
-    font-weight: 500;
-}
-.textarea-controls.control-board {
-  height: 121px !important;
-}
-.textarea-controls.control-board a{
-  color: #2196f3; 
-}
-#header{
-  height:55px;
-}
-.boot-center{
-  text-align:center;
-}
-.boot-style {
-    font-size: 37px;
-    letter-spacing: 20px;
-    margin: 5px;
-    color: white;
-    font-weight: 500;
-}
-.vertical-divider{
-  border-right: 1px dashed #333;
-}
-.md-ripple-container{
-  display:none;
-}
-
-.test-controller {
-  position: fixed;
-  z-index: 901;
-  height: 85px;
-  border: 1px solid #CECECE;
-  width: 98%;
-  display: block;
-  bottom: 10px;
-}
-.flex-10, .layout-row>.flex-10 {
-    max-width: 20%;
-}
-md-slider{
-  margin-right:20px;
-}
-#demo-setting{
-  display:none;
-}
-.chat-footer{
-  background:none;
-}
+.testing-bot{height:auto;background:url("../../styles/img/avatars/testing.png") no-repeat;background-position:left;background-size:initial}
+.yellow.accent-1{border:2px solid #666;background-color:#febd31}.pink-panter.accent-1{border:2px solid #666;background-color:#ff4081}
+.green.accent-1{border:2px solid #666;background-color:#3ac64e}.bot-profile{display:inline-block;width:141px;height:174px}
+.clearfix{clear:both}.center-content{text-align:center}.card-panel{transition:box-shadow .25s;padding:20px;margin:.5rem 0 1rem 0;border-radius:2px;background-color:#fff;font-size:15px;color:darkblue;font-weight:300}
+.left-align{text-align:left}.left{float:left}.right{float:right}.test-bot .chat-body li.message img{display:inline-block;border-radius:50%;width:50px;border:5px solid rgba(0,0,0,.14);box-sizing:content-box;border-left:4px solid #fff;position:absolute}
+.test-bot .chat-body li.message{max-width:590px;height:70px;left:27%;display:block;border-radius:10px;position:relative;margin:20px 20px 0}
+.txt-color-blueDark.title{font-size:60px;font-weight:500}.textarea-controls.control-board{height:121px !important}
+.textarea-controls.control-board a{color:#2196f3}#header{height:55px}.boot-center{text-align:center}
+.boot-style{font-size:37px;letter-spacing:20px;margin:5px;color:white;font-weight:500}
+.vertical-divider{border-right:1px dashed #333}.md-ripple-container{display:none}
+.test-controller{position:fixed;z-index:901;height:85px;border:1px solid #cecece;width:98%;display:block;bottom:10px}
+.flex-10,.layout-row>.flex-10{max-width:20%}md-slider{margin-right:20px}#demo-setting{display:none}
+.chat-footer{background:0}md-select{margin:20px 0 15px;text-align:center;font-size:18px}
+.smart-style-2.menu-on-top aside#left-panel{display:none}.center-content{text-align:center}
+.setting-mod{width:25%}.status .who{padding:10px}.turn-number{font-size:18px;font-weight:300;width:20%;text-align:center}
+svg{height:50px;width:50px;position:relative;bottom:10px;background-color:white}#circle_tester{cx:25;cy:25;r:10;stroke:#666;stroke-width:2;fill:#febd31;color:white;transition:stroke .5s,r .5s}
+#circle_testing{cx:25;cy:25;r:10;stroke:#666;stroke-width:2;fill:#3ac64e;color:white;transition:stroke .5s,r .5s}
+#circle_testing.active{stroke:#444;stroke-width:4;r:20}#circle_tester.active{stroke:#444;stroke-width:4;r:20}

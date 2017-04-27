@@ -6,15 +6,17 @@ angular.module('app.dashboard')
   $scope.testTurn = 0;
   $scope.testingCounts = 0;
   $scope.testerCounts = 0;
-  $scope.rating1 = 3;
+  $scope.rating1 = 5;
   $scope.rating2 = 2;
   $scope.rating3 = 4;
   var ENTER_KEY_CODE = 13;
   var testerQueryInput,testingQueryInput,chatLayout,resultDiv, accessTokenInputSmartBot, accessTokenInputGreeterBot,startEngine,stopEngine;
-  
+  var testerDot,testingDot;
   var initApi = function(){
     resultDiv = document.getElementById("chat-body");
     chatLayout = $(".chat-body");
+    testingDot = document.getElementById("circle_testing");
+    testerDot = document.getElementById("circle_tester");
     testerQueryInput = document.getElementById("q_tester");
     testingQueryInput = document.getElementById("q_testing");
     startEngine = document.getElementById("start_engine");
@@ -177,10 +179,12 @@ function streamClientOnResults(results) {
 
   
   function createQueryNode(query) {
+    $(testerDot).attr("class","active");
     var node = document.createElement('div');
     node.className = "clearfix left-align left card-panel yellow accent-1";
     node.innerHTML = query;
     resultDiv.appendChild(node);
+    $scope.testTurn += .5;
     scrollBottom();
 
   }
@@ -193,10 +197,12 @@ function streamClientOnResults(results) {
   }
 
   function createResponseNode() {
+    $(testingDot).attr("class","active");
     var node = document.createElement('div');
     node.className = "clearfix right-align right card-panel green accent-1";
     node.innerHTML = "...";
     resultDiv.appendChild(node);
+    $scope.testTurn += .5;
     return node;
   }
   function createUserResponseNode() {
@@ -229,9 +235,16 @@ function streamClientOnResults(results) {
     scrollBottom();
 
   }
+  function updateTurn(){
+    if(Number.isInteger($scope.testTurn)){
+      $(testerDot).attr("class","");
+    }else{
+      $(testingDot).attr("class","");
+    }
+  }
   function scrollBottom(){
     $scope.testDuration += 1;
-    $scope.testTurn += .5;
+    updateTurn();
     var chatElem = document.getElementById("chat-body");
     chatElem.scrollTop = chatElem.scrollHeight;
   }
@@ -266,7 +279,7 @@ function streamClientOnResults(results) {
     pauseEngine.children().addClass('fa-pause');
 
     var value = "Start";
-    var responseNode = createResponseNode();
+    // var responseNode = createResponseNode();
     sendSmart(value)
     .then(function(response) {
       var result;

@@ -5,6 +5,7 @@ var connect = require('gulp-connect');
 var templateCache = require('gulp-angular-templatecache');
 var ngAnnotate = require('gulp-ng-annotate');
 var uglify = require('gulp-uglify');
+var uglifycss = require('gulp-uglifycss');
 var fs = require('fs');
 var _ = require('lodash');
 
@@ -68,6 +69,10 @@ gulp.task('css',function(){
     gulp.src(source.css)
     .pipe(connect.reload());
     return gulp.src(source.css)
+    .pipe(uglifycss({
+      "maxLineLen": 80,
+      "uglyComments": true
+    }))
     .pipe(concat('custom.css'))
     .pipe(gulp.dest(destinations.css));
 

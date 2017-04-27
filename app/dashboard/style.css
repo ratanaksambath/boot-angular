@@ -6,12 +6,15 @@
   background-size:initial;
 }
 .yellow.accent-1 {
+  border: 2px solid #666; 
   background-color: #febd31;
 }
 .pink-panter.accent-1{
+  border: 2px solid #666;
   background-color: #ff4081;
 }
 .green.accent-1{
+  border: 2px solid #666;
   background-color: #3ac64e;
 }
 .bot-profile{
@@ -116,4 +119,73 @@ md-slider{
 }
 .chat-footer{
   background:none;
+}
+md-select{
+  margin: 20px 0 15px;
+  text-align: center;
+  font-size:18px;
+}
+.smart-style-2.menu-on-top aside#left-panel{
+  display:none;
+}
+.center-content{
+  text-align: center;
+}
+
+.setting-mod{
+  width:25%;
+}
+.status .who {
+
+  padding: 10px;
+}
+.turn-number{
+  font-size: 18px;
+  font-weight: 300;
+  width: 20%;
+  text-align: center;
+}
+/*turn take svg animation */
+
+
+
+
+svg {
+  height: 50px;
+  width: 50px;
+  position: relative;
+  bottom: 10px;
+  background-color: white;
+}
+
+#circle_tester {
+  cx: 25;
+  cy: 25;
+  r: 10;
+  stroke:#666;
+  stroke-width: 2;
+  fill: #febd31;
+  color: white;
+  transition: stroke 0.5s, r 0.5s;
+}
+#circle_testing {
+  cx: 25;
+  cy: 25;
+  r: 10;
+  stroke: #666;
+  stroke-width: 2;
+  fill: #3ac64e;
+  color: white;
+  transition: stroke 0.5s, r 0.5s;
+}
+
+#circle_testing.active {
+  stroke: #444;
+  stroke-width: 4;
+  r: 20;
+}
+#circle_tester.active {
+  stroke: #444;
+  stroke-width: 4;
+  r: 20;
 }

@@ -21,6 +21,7 @@
     "lodash": "^4.0.0"
   },
   "dependencies": {
-    "apiai": "^4.0.1"
+    "apiai": "^4.0.1",
+    "gulp-uglifycss": "^1.0.8"
   }
 }
