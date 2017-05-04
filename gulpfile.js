@@ -34,7 +34,7 @@ var source = {
         tpl: ['app/**/*.tpl.html','app/**/*.html'],
         
     },
-    css: ['app/**/*.css']
+    css: ['app/**/*.css','app/**/**/*.css']
 };
 
 var destinations = {
@@ -67,14 +67,13 @@ gulp.task('html',function(){
 });
 gulp.task('css',function(){
     gulp.src(source.css)
-    .pipe(connect.reload());
-    return gulp.src(source.css)
     .pipe(uglifycss({
       "maxLineLen": 80,
       "uglyComments": true
     }))
     .pipe(concat('custom.css'))
-    .pipe(gulp.dest(destinations.css));
+    .pipe(gulp.dest(destinations.css))
+    .pipe(connect.reload());
 
 });
 gulp.task('watch', function(){

@@ -1,0 +1,13 @@
+md-slider .md-sign{
+    display:none;
+}
+.strong{
+    transform: scale(2);
+}
+md-slider.md-default-theme.md-min[md-discrete] .md-thumb:after, md-slider.md-min[md-discrete] .md-thumb:after {
+    background-color: rgb(255,64,129);
+    transform: scale(2);
+}
+md-slider .md-track.md-track-fill {
+    background-color: rgba(0,0,0,0);
+}

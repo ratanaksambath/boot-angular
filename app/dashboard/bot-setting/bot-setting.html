@@ -1,0 +1,64 @@
+<div id="content" ng-controller="botSettingCtrl" ng-cloak="">
+  <section id="widget-grid" class="">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="panel panel-default">
+          <h3>Test Bot</h3>
+          <div class="panel-body status">
+            <div class="chat-body">
+              <h5>Personality Settings</h5>
+              <div ng-repeat="ability in abilityDraft">
+                <div layout="">
+                  <div flex="10" layout="" layout-align="center center">
+                    <span class="md-body-1"><h5>{{ability.negativeTitle}}</h5></span>
+                  </div>
+                  <md-slider style="width:130px;min-width: 10px" flex="" md-discrete="" ng-model="ability.modelName" step="1" min="1" max="5" aria-label="rating" ng-change="triggerWatch(ability.modelName)">
+                  </md-slider>
+                  <div flex="10" layout="" layout-align="center center">
+                    <span class="md-body-1"><h5>{{ability.positiveTitle}}</h5></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="panel panel-default">
+          <h3>Dialogue</h3>
+          <div class="panel-body status">
+            <div>
+              <md-content>
+                <md-input-container class="md-icon-float md-icon-right md-block">
+                  <label>Number of rounds</label>
+                  <input ng-model="user.round" type="number" step="0.01">
+                </md-input-container>
+                <md-input-container class="md-icon-float md-icon-right md-block">
+                  <label>Number of test-dialogue in each rounds</label>
+                  <input ng-model="user.eachRound" type="number" step="0.01">
+                </md-input-container>
+                <md-input-container class="md-icon-float md-icon-right md-block">
+                  <label>Maximum number of turns per test dialogue</label>
+                  <input ng-model="user.donation" type="number" step="0.01">
+                </md-input-container>
+                <md-input-container class="md-icon-float md-icon-right md-block">
+                  <label>Number of rounds</label>
+                  <input ng-model="user.donation" type="number" step="0.01">
+                </md-input-container>
+              </md-content>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 ">
+        <div class="panel panel-default">
+          <h3>Bot To Test</h4>
+          <div class="panel-body status">
+            <div class="chat-body ">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

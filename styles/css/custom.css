@@ -16,3 +16,5 @@
 svg{height:50px;width:50px;position:relative;bottom:10px;background-color:white}#circle_tester{cx:25;cy:25;r:10;stroke:#666;stroke-width:2;fill:#febd31;color:white;transition:stroke .5s,r .5s}
 #circle_testing{cx:25;cy:25;r:10;stroke:#666;stroke-width:2;fill:#3ac64e;color:white;transition:stroke .5s,r .5s}
 #circle_testing.active{stroke:#444;stroke-width:4;r:20}#circle_tester.active{stroke:#444;stroke-width:4;r:20}
+md-slider .md-sign{display:none}.strong{transform:scale(2)}md-slider.md-default-theme.md-min[md-discrete] .md-thumb:after,md-slider.md-min[md-discrete] .md-thumb:after{background-color:#ff4081;transform:scale(2)}
+md-slider .md-track.md-track-fill{background-color:rgba(0,0,0,0)}

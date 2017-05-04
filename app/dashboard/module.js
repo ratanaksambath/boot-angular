@@ -20,6 +20,15 @@ angular.module('app.dashboard', [
                 title: 'Dashboard'
             }
         })
+        .state('app.bot-setting',{
+            url: '/bot-setting',
+            views: {
+                "content@app":{
+                    controller: 'botSettingCtrl',
+                    templateUrl: 'app/dashboard/bot-setting/bot-setting.html'
+                }
+            }
+        })
         .state('app.dashboard-analytic', {
             url: '/dashboard-analytic',
             views: {
