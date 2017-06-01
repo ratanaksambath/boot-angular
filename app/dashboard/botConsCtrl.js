@@ -9,12 +9,12 @@ angular.module('app.dashboard')
   $scope.rating1 = 5;
   $scope.rating2 = 2;
   $scope.rating3 = 4;
+  $scope.layoutHeight = $window.innerHeight * 60 / 100;
   var ENTER_KEY_CODE = 13;
-  var testerQueryInput,testingQueryInput,chatLayout,resultDiv, accessTokenInputSmartBot, accessTokenInputGreeterBot,startEngine,stopEngine;
+  var testerQueryInput,testingQueryInput,resultDiv, accessTokenInputSmartBot, accessTokenInputGreeterBot,startEngine,stopEngine;
   var testerDot,testingDot;
   var initApi = function(){
     resultDiv = document.getElementById("chat-body");
-    chatLayout = $(".chat-body");
     testingDot = document.getElementById("circle_testing");
     testerDot = document.getElementById("circle_tester");
     testerQueryInput = document.getElementById("q_tester");
@@ -99,12 +99,6 @@ angular.module('app.dashboard')
     // accessTokenInputGreeterBot = document.getElementById("access_token_greeter_bot");
 
     // hardcode access token to api ai
-
-    var myHeight = $window.innerHeight;
-    var chatBodyHeight = (myHeight * 60)/100;
-    chatLayout.css("height",chatBodyHeight);
-    console.log(resultDiv);
-
 
     accessTokenInputSmartBot = '2444810482424c27a4b9fd6d14f24afc';
     accessTokenInputGreeterBot = '2aba49304ba94fe29db43383ef5d6b7c';

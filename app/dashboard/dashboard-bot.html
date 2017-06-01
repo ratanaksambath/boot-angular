@@ -24,7 +24,7 @@
               <md-option value="wand">Wand</md-option>
             </md-select>
 
-            <div class="chat-body ">
+            <div class="chat-body" ng-style="{'height': layoutHeight}">
               <div class="row">
                 <div class="col center-content">
                   <div class="bot-profile">
@@ -34,10 +34,19 @@
               </div>
             </div>
             <div class="chat-footer" style="height:143px">
-              <div>
-                <h5>Verbosity: avg 2/turn</h5>
-                <h5>Cooperative: Percentage</h5>
-                <h5>User Input: {{testerCounts}}</h5>
+              <div style="text-align: center">
+                <div style="display:inline-flex; width:100%">
+                  <h5 class="first-half">Average verbosity: </h5>
+                  <h5 class="second-half"> 2 words / turn </h5>
+                </div>
+                <div style="display:inline-flex; width:100%">
+                  <h5 class="first-half">Cooperative: </h5>
+                  <h5 class="second-half">Percentage</h5>
+                </div>
+                <div style="display:inline-flex; width:100%">
+                  <h5 class="first-half">User Input: </h5>
+                  <h5 class="second-half">{{testerCounts}}</h5>
+                </div>
               </div>
             </div>
           </div>
@@ -52,27 +61,24 @@
                 <div class="col-lg-4">
                   <h4>Round 1 / Dialogue 1</h4>
                 </div>
-                <div class="col-lg-4" style="display:flex;">
-                  <div class="setting-mod">
-                    <h4>Turn:</h4>
-                  </div>
+                <div class="col-lg-4 turn" style="display:flex;">
                   <div style="display:flex;width:75%;">
                     <svg>
                       <circle id="circle_tester" />
                     </svg>
+                    <h4>Turn:</h4>
                     <p class="turn-number">{{testTurn}}</p>
                     <svg>
                       <circle id="circle_testing" />
                     </svg>
                   </div>
                 </div>
-                <div class="col-lg-4">
-                  <h4>Duration: {{testDuration}}</h4>
+                <div class="col-lg-4" >
+                  <h4 style="text-align: right">Duration: {{testDuration}}</h4>
                 </div>
               </div>
             </div>
-
-            <div id="chat-body" class="chat-body custom-scroll">
+            <div id="chat-body" class="chat-body" ng-style="{'height': layoutHeight,'z-index':1}">
               <ul>
 
                 <li class="clearfix left-align left card-panel yellow accent-1">
@@ -131,12 +137,12 @@
     <div class="col-lg-3 ">
       <div class="panel panel-default">
         <div class="panel-body status">
-          <md-select ng-model="weapon" placeholder="Weapon" class="md-no-underline">
+          <md-select ng-model="weapon" placeholder="Select Bot" class="md-no-underline">
             <md-option value="axe">Axe</md-option>
             <md-option value="sword">Sword</md-option>
             <md-option value="wand">Wand</md-option>
           </md-select>
-          <div class="chat-body custom-scroll">
+          <div class="chat-body custom-scroll" ng-style="{'height': layoutHeight}">
             <div class="row">
               <div class="col center-content">
                 <div class="bot-profile">
@@ -150,10 +156,19 @@
             </div>
           </div>
           <div class="chat-footer" style="height:143px">
-            <div>
-              <h5>Verbosity: avg 2/turn</h5>
-              <h5>Cooperative: Percentage</h5>
-              <h5 class="ng-binding">User Input: {{testingCounts}}</h5>
+            <div style="text-align: center">
+              <div style="display:inline-flex; width:100%">
+                  <h5 class="first-half">Average verbosity: </h5>
+                  <h5 class="second-half"> 2 words / turn </h5>
+                </div>
+                <div style="display:inline-flex; width:100%">
+                  <h5 class="first-half">Cooperative: </h5>
+                  <h5 class="second-half">Percentage</h5>
+                </div>
+                <div style="display:inline-flex; width:100%">
+                  <h5 class="first-half">User Input: </h5>
+                  <h5 class="second-half">{{testingCounts}}</h5>
+                </div>
             </div>
           </div>
         </div>

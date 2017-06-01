@@ -6,21 +6,28 @@
   background-size:initial;
 }
 .yellow.accent-1 {
-  border: 2px solid #666; 
+  border: 2px solid #c08f26; 
+  border-radius: 6px;
   background-color: #febd31;
 }
 .pink-panter.accent-1{
+  border-radius: 6px;
   border: 2px solid #666;
   background-color: #ff4081;
 }
 .green.accent-1{
-  border: 2px solid #666;
+  border: 2px solid #298837;
+  border-radius: 6px;
   background-color: #3ac64e;
 }
 .bot-profile{
   display:inline-block;
-  width:141px;
-  height:174px;
+  width:200px;
+  height:247px;
+}
+.bot-profile img{
+  width:100%;
+  height:100%;
 }
 .clearfix {
   clear: both;
@@ -88,9 +95,11 @@
 .boot-style {
     font-size: 37px;
     letter-spacing: 20px;
-    margin: 5px;
     color: white;
     font-weight: 500;
+}
+h1.boot-style{
+  margin:0;
 }
 .vertical-divider{
   border-right: 1px dashed #333;
@@ -111,7 +120,12 @@
 .flex-10, .layout-row>.flex-10 {
     max-width: 20%;
 }
+.control-board md-slider{
+  margin-left:20px;
+  margin-right:70px;
+}
 md-slider{
+  margin-left:20px;
   margin-right:20px;
 }
 #demo-setting{
@@ -132,9 +146,6 @@ md-select{
   text-align: center;
 }
 
-.setting-mod{
-  width:25%;
-}
 .status .who {
 
   padding: 10px;
@@ -147,10 +158,27 @@ md-select{
 }
 /*turn take svg animation */
 
+/*testing bot drop down list*/
+.md-select-value {
+    font-size: 23px;
+    font-weight: 600;
+}
+/*end testing bot drop down list*/
 
+/*text align film style*/
+.first-half{
+  width: 50%;
+  text-align: end;
+  padding-right: 5px;
+}
+.second-half{
+  width: 50%;
+  text-align: start;
+  padding-left: 5px;
+}
+/*end text align film style*/
 
-
-svg {
+.turn svg {
   height: 50px;
   width: 50px;
   position: relative;
@@ -162,7 +190,7 @@ svg {
   cx: 25;
   cy: 25;
   r: 10;
-  stroke:#666;
+  stroke:#c08f26;
   stroke-width: 2;
   fill: #febd31;
   color: white;
@@ -172,7 +200,7 @@ svg {
   cx: 25;
   cy: 25;
   r: 10;
-  stroke: #666;
+  stroke: #298837;
   stroke-width: 2;
   fill: #3ac64e;
   color: white;
@@ -180,12 +208,12 @@ svg {
 }
 
 #circle_testing.active {
-  stroke: #444;
+  stroke: #298837;
   stroke-width: 4;
   r: 20;
 }
 #circle_tester.active{
-  stroke: #444;
+  stroke: #c08f26;
   stroke-width: 4;
   r: 20;
 }
