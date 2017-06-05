@@ -137,21 +137,30 @@
     <div class="col-lg-3 ">
       <div class="panel panel-default">
         <div class="panel-body status">
-          <md-select ng-model="weapon" placeholder="Select Bot" class="md-no-underline">
-            <md-option value="axe">Axe</md-option>
-            <md-option value="sword">Sword</md-option>
-            <md-option value="wand">Wand</md-option>
+          <md-select ng-model="weapon" ng-init="weapon = apiai" placeholder="Select Bot" class="md-no-underline">
+            <md-option value="confluence">Infosys Confluence Bot</md-option>
+            <md-option value="apiai">API.AI Small Talk</md-option>
           </md-select>
           <div class="chat-body custom-scroll" ng-style="{'height': layoutHeight}">
             <div class="row">
               <div class="col center-content">
                 <div class="bot-profile">
-                  <img src="styles/img/avatars/greenBot.png">
+                  <div ng-show="weapon=='confluence'">
+                    <img src="styles/img/avatars/redBot.png">
+                    <div class="col center-content">
+                  <h4 style="font-size:15px">Source: {{weapon}}</h4>
+                  <h4 style="font-size:15px">Description: Confluence Conference San Francisco</h4>
                 </div>
-                <div class="col center-content">
-                  <h4 style="font-size:15px">Source: API.AI</h4>
-                  <h4 style="font-size:15px">Description: Emotional Bot</h4>
+                  </div>
+                  <div ng-show="weapon=='apiai'">
+                    <img src="styles/img/avatars/greenBot.png">
+                    <div class="col center-content">
+                      <h4 style="font-size:15px">Source: {{weapon}}</h4>
+                      <h4 style="font-size:15px">Description: Small Talk</h4>
+                    </div>
+                  </div>
                 </div>
+                
               </div>
             </div>
           </div>

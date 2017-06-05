@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.dashboard')
-.controller('botConsCtrl',function($scope,$window,$interval){
+.controller('botConsCtrl',function($scope,$window,$interval,$http){
   $scope.testDuration = 0;
   $scope.testTurn = 0;
   $scope.testingCounts = 0;
@@ -13,6 +13,7 @@ angular.module('app.dashboard')
   var ENTER_KEY_CODE = 13;
   var testerQueryInput,testingQueryInput,resultDiv, accessTokenInputSmartBot, accessTokenInputGreeterBot,startEngine,stopEngine;
   var testerDot,testingDot;
+
   var initApi = function(){
     resultDiv = document.getElementById("chat-body");
     testingDot = document.getElementById("circle_testing");
@@ -129,6 +130,20 @@ angular.module('app.dashboard')
 
     clientSmart = new ApiAi.ApiAiClient({accessToken: token});
     clientGreeter = new ApiAi.ApiAiClient({accessToken: token1});
+    // confluence bot connectivity
+    // var req = {
+    //   method : "POST",
+    //   url : "https://chatbot.evoncloud.com/authenticate",
+    //   headers: {"Content-Type": "application/json"},
+    //   data: {
+    //     username: 'ratanaksambath@gmail.com', 
+    //     email:'ratanaksambath@gmail.com'
+    //   }
+    // }
+    // $http(req).then(function(response){
+    //   console.log(response);
+    // });
+    // end connectivity
   }
 
 
@@ -136,6 +151,9 @@ angular.module('app.dashboard')
 
 function sendSmart(text) {
   return clientSmart.textRequest(text);
+}
+function sendConfluence(text){
+
 }
 function sendGreeter(text){
   return  clientGreeter.textRequest(text);
@@ -340,6 +358,7 @@ function streamClientOnResults(results) {
 
         }else{
           var responseNode = createResponseNode();
+          console.log($scope.weapon);
           sendGreeter(lastChild.text())
           .then(function(response) {
             var result;
@@ -396,11 +415,5 @@ function streamClientOnResults(results) {
       var uriContent = "data:application/octet-stream," + encodeURIComponent(toBeLog);
       var newWindow = window.open(uriContent, 'logFile');
     };
-
-
     $window.onload = initApi;
-
-
-
-
   });
