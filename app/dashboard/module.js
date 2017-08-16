@@ -9,6 +9,7 @@ angular.module('app.dashboard', [
 .config(function ($stateProvider) {
     $stateProvider
         .state('app.dashboard', {
+            authentication: true,
             url: '/dashboard',
             views: {
                 "content@app": {

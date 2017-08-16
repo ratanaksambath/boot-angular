@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.dashboard')
-.controller('botConsCtrl',function($scope,$window,$interval,$http){
+.controller('botConsCtrl',function($scope,$window,$interval,$http,$firebaseObject){
   $scope.testDuration = 0;
   $scope.testTurn = 0;
   $scope.testingCounts = 0;
@@ -119,7 +119,6 @@ angular.module('app.dashboard')
     // setAccessTokenButtonForSmartBot.addEventListener("click", setAccessTokenSmartBot);
     // setAccessTokenButtonForGreeterBot.addEventListener("click", setAccessTokenGreeterBot);
   }
-
   var clientSmart,clientGreeter, streamClientSmart,streamClientGreeter;
   $window.initApi = function(token,token1) {
 

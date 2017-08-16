@@ -1,7 +1,7 @@
 .testing-bot{height:auto;background:url("../../styles/img/avatars/testing.png") no-repeat;background-position:left;background-size:initial}
-.yellow.accent-1{border:2px solid #c08f26;border-radius:6px;background-color:#febd31}
-.pink-panter.accent-1{border-radius:6px;border:2px solid #666;background-color:#ff4081}
-.green.accent-1{border:2px solid #298837;border-radius:6px;background-color:#3ac64e}
+.yellow.accent-1{list-style-type:none;position:relative;border:2px solid #c08f26;border-radius:20px;background-color:#febd31;border-bottom-left-radius:1px}
+.pink-panter.accent-1{list-style-type:none;position:relative;border-radius:20px;border:2px solid #666;background-color:#ff4081}
+.green.accent-1{list-style-type:none;position:relative;border:2px solid #298837;border-radius:20px;background-color:#3ac64e;border-bottom-right-radius:1px}
 .bot-profile{display:inline-block;width:200px;height:247px}.bot-profile img{width:100%;height:100%}
 .clearfix{clear:both}.center-content{text-align:center}.card-panel{transition:box-shadow .25s;padding:20px;margin:.5rem 0 1rem 0;border-radius:2px;background-color:#fff;font-size:15px;color:darkblue;font-weight:300}
 .left-align{text-align:left}.left{float:left}.right{float:right}.test-bot .chat-body li.message img{display:inline-block;border-radius:50%;width:50px;border:5px solid rgba(0,0,0,.14);box-sizing:content-box;border-left:4px solid #fff;position:absolute}
@@ -10,15 +10,18 @@
 .textarea-controls.control-board a{color:#2196f3}#header{height:55px}.boot-center{text-align:center}
 .boot-style{font-size:37px;letter-spacing:20px;color:white;font-weight:500}h1.boot-style{margin:0}
 .vertical-divider{border-right:1px dashed #333}.md-ripple-container{display:none}
-.test-controller{position:fixed;z-index:901;height:85px;border:1px solid #cecece;width:98%;display:block;bottom:10px}
-.flex-10,.layout-row>.flex-10{max-width:20%}.control-board md-slider{margin-left:20px;margin-right:70px}
-md-slider{margin-left:20px;margin-right:20px}#demo-setting{display:none}.chat-footer{background:0}
-md-select{margin:20px 0 15px;text-align:center;font-size:18px}.smart-style-2.menu-on-top aside#left-panel{display:none}
+.test-controller{position:fixed;z-index:901;height:85px;width:98%;display:block;bottom:10px}
+.flex-10,.layout-row>.flex-10{max-width:20%}.control-board md-slider{margin-left:100px;margin-right:150px}
+md-slider{margin-left:20px;margin-right:20px}md-slider[md-discrete] .md-sign,md-slider[md-discrete] .md-sign:after{opacity:1;-webkit-transform:translate3d(0,0,0) scale(1);transform:translate3d(0,0,0) scale(1)}
+#demo-setting{display:none}.chat-footer{background:0}.smart-style-2.menu-on-top aside#left-panel{display:none}
 .center-content{text-align:center}.status .who{padding:10px}.turn-number{font-size:18px;font-weight:300;width:20%;text-align:center}
-.md-select-value{font-size:23px;font-weight:600}.first-half{width:50%;text-align:end;padding-right:5px}
-.second-half{width:50%;text-align:start;padding-left:5px}.turn svg{height:50px;width:50px;position:relative;bottom:10px;background-color:white}
+.bot-option md-select{margin:20px 0 15px}.bot-option .md-select-value{text-align:center;font-size:18px;font-weight:600}
+.first-half{width:50%;text-align:end;padding-right:5px}.second-half{width:50%;text-align:start;padding-left:5px}
+.turn svg{height:50px;width:50px;position:relative;bottom:10px;background-color:white}
 #circle_tester{cx:25;cy:25;r:10;stroke:#c08f26;stroke-width:2;fill:#febd31;color:white;transition:stroke .5s,r .5s}
 #circle_testing{cx:25;cy:25;r:10;stroke:#298837;stroke-width:2;fill:#3ac64e;color:white;transition:stroke .5s,r .5s}
 #circle_testing.active{stroke:#298837;stroke-width:4;r:20}#circle_tester.active{stroke:#c08f26;stroke-width:4;r:20}
+#header>:first-child,aside{width:0}
 .strong{transform:scale(2)}md-slider .md-track.md-track-fill{background-color:rgba(0,0,0,0)}
-.personal-setting{padding:21px 0}.setting-title{font-size:20px;font-weight:bold}#main{margin-left:0}
+md-slider.md-primary .md-track.md-track-fill{background-color:rgba(0,0,0,0)}.personal-setting{padding:21px 0}
+.setting-title{font-size:20px;font-weight:bold}#main{margin-left:0}md-content{background-color:inherit}

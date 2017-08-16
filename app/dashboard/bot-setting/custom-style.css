@@ -1,8 +1,11 @@
 .strong{
-    transform: scale(2);
+  transform: scale(2);
 }
 md-slider .md-track.md-track-fill {
-    background-color: rgba(0,0,0,0);
+  background-color: rgba(0,0,0,0);
+}
+md-slider.md-primary .md-track.md-track-fill{
+  background-color: rgba(0,0,0,0);
 }
 .personal-setting{
   padding: 21px 0;
@@ -13,4 +16,8 @@ md-slider .md-track.md-track-fill {
 }
 #main{
   margin-left:0;
+}
+
+md-content{
+  background-color:inherit;
 }

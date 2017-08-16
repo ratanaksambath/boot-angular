@@ -265,7 +265,14 @@ if (appConfig.voice_command) {
         }
     };
 }
-
+appConfig.firebaseInit = {
+    apiKey: "AIzaSyCmj71d6xcrw8WJxNTRMOjYDXXIz9EEPg0",
+    authDomain: "boot-e60e2.firebaseapp.com",
+    databaseURL: "https://boot-e60e2.firebaseio.com",
+    projectId: "boot-e60e2",
+    storageBucket: "boot-e60e2.appspot.com",
+    messagingSenderId: "809481588185"
+};
 appConfig.apiRootUrl = 'api';
 window.appConfig = appConfig;
 

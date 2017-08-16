@@ -1,6 +1,4 @@
 <div id="content" class="test-bot" ng-controller="botConsCtrl" ng-cloak="">
-
-
     <!--
     The ID "widget-grid" will start to initialize all widgets below
     You do not need to use widgets if you dont want to. Simply remove
@@ -18,7 +16,7 @@
       <div class="col-lg-3 ">
         <div class="panel panel-default">
           <div class="panel-body status">
-            <md-select ng-model="weapon" placeholder="Weapon" class="md-no-underline">
+            <md-select ng-model="weapon" placeholder="Weapon" class="bot-option md-no-underline">
               <md-option value="axe">Axe</md-option>
               <md-option value="sword">Sword</md-option>
               <md-option value="wand">Wand</md-option>
@@ -52,33 +50,45 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-6 ">
+      <div class="col-lg-6 " style="position:relative">
 
         <div class="panel panel-default">
           <div class="panel-body status">
-            <div class="who clearfix">
-              <div class="row">
-                <div class="col-lg-4">
-                  <h4>Round 1 / Dialogue 1</h4>
-                </div>
-                <div class="col-lg-4 turn" style="display:flex;">
-                  <div style="display:flex;width:75%;">
-                    <svg>
-                      <circle id="circle_tester" />
-                    </svg>
-                    <h4>Turn:</h4>
-                    <p class="turn-number">{{testTurn}}</p>
-                    <svg>
-                      <circle id="circle_testing" />
-                    </svg>
-                  </div>
-                </div>
-                <div class="col-lg-4" >
-                  <h4 style="text-align: right">Duration: {{testDuration}}</h4>
+            <div class="who clearfix" style="border-bottom:0px"></div>
+            <div class="row">
+              <div class="col-lg-4">
+                <h4>Round 1 of 100</h4>
+                <h4>Dialogue 1 of 100</h4>
+              </div>
+              <div class="col-lg-4 turn" style="padding-left:6%;">
+                <div style="display:flex;width:75%;">
+                  <svg>
+                    <circle id="circle_tester" />
+                  </svg>
+                  <h4>Turn:</h4>
+                  <p class="turn-number">{{testTurn}}</p>
+                  <svg>
+                    <circle id="circle_testing" />
+                  </svg>
                 </div>
               </div>
+              <div class="col-lg-4" >
+                <h4 style="text-align: right">Duration: {{testDuration}} turns</h4>
+                <h4 style="text-align: right">Length: 20 sec</h4>
+              </div>
             </div>
+            
             <div id="chat-body" class="chat-body" ng-style="{'height': layoutHeight,'z-index':1}">
+              <div style="position: absolute;
+              font-size: 300px;
+              width: 100%;
+              top: 162px;
+              color: grey;
+              text-align: center;
+              opacity: 0.2;">
+              <p>80%</p> 
+            </div>
+            <div style="position:relative;z-index: 2;">
               <ul>
 
                 <li class="clearfix left-align left card-panel yellow accent-1">
@@ -96,31 +106,21 @@
 
               </ul>
             </div>
+          </div>
 
-            <div class="chat-footer" style="padding:0px">
-
-              <div class="control-board" style="height: 142px">
-                <div class="row" style="margin:0px;padding-top:50px">
-                  <span class="col">
-                    <div layout="">
-                      <div flex="10" layout="" layout-align="center center">
-                        <span class="md-body-1"><h5>Dialogue Speed</h5></span>
-                      </div>
-                      <md-slider style="width:130px;min-width: 10px" flex="" md-discrete="" ng-model="rating1" step="1" min="1" max="5" aria-label="rating">
-                      </md-slider>
+          <div class="chat-footer" style="padding:0px">
+            <div class="control-board" style="height: 142px">
+              <div class="row" style="margin:0px;padding-top:50px">
+                <span class="col">
+                  <div layout="">
+                    <div flex="10" layout="" layout-align="center center">
+                      <span class="md-body-1"><h5>Dialogue Speed</h5></span>
                     </div>
-                    
-                    <!-- <md-slider-container>
-                      <span>Velocity</span>
-                      <md-slider style="width:130px;min-width: 10px" flex="" min="0" max="255" ng-model="color.green" aria-label="green" id="green-slider">
-                      </md-slider>
-                      <md-input-container>
-                        <input flex="" type="number" ng-model="color.green" aria-label="green" aria-controls="green-slider">
-                      </md-input-container>
-                    </md-slider-container> -->
-                  </span>
-
-                  <span class="col-lg-2" style="display:none;padding-top:30px;right:10px">
+                    <md-slider flex="" md-discrete="" ng-model="rating1" step="1" min="1" max="5" aria-label="rating">
+                    </md-slider>
+                  </div>
+                </span>
+                <span class="col-lg-2" style="display:none;padding-top:30px;right:10px">
                   <md-button id ="log_file" class="md-fab" aria-label="Photos">
                     <md-tooltip md-visible="demo.showTooltip">Download Logs</md-tooltip>
                     <md-icon class="fa fa-download fa-2x"></md-icon>
@@ -128,7 +128,6 @@
                 </span>
               </div>  
             </div>
-
           </div>
         </div>
       </div>
@@ -137,7 +136,7 @@
     <div class="col-lg-3 ">
       <div class="panel panel-default">
         <div class="panel-body status">
-          <md-select ng-model="weapon" ng-init="weapon = apiai" placeholder="Select Bot" class="md-no-underline">
+          <md-select ng-model="weapon" ng-init="weapon = apiai" placeholder="Select Bot" class="bot-option md-no-underline">
             <md-option value="confluence">Infosys Confluence Bot</md-option>
             <md-option value="apiai">API.AI Small Talk</md-option>
           </md-select>
@@ -148,9 +147,9 @@
                   <div ng-show="weapon=='confluence'">
                     <img src="styles/img/avatars/redBot.png">
                     <div class="col center-content">
-                  <h4 style="font-size:15px">Source: {{weapon}}</h4>
-                  <h4 style="font-size:15px">Description: Confluence Conference San Francisco</h4>
-                </div>
+                      <h4 style="font-size:15px">Source: {{weapon}}</h4>
+                      <h4 style="font-size:15px">Description: Confluence Conference San Francisco</h4>
+                    </div>
                   </div>
                   <div ng-show="weapon=='apiai'">
                     <img src="styles/img/avatars/greenBot.png">
@@ -167,64 +166,63 @@
           <div class="chat-footer" style="height:143px">
             <div style="text-align: center">
               <div style="display:inline-flex; width:100%">
-                  <h5 class="first-half">Average verbosity: </h5>
-                  <h5 class="second-half"> 2 words / turn </h5>
-                </div>
-                <div style="display:inline-flex; width:100%">
-                  <h5 class="first-half">Cooperative: </h5>
-                  <h5 class="second-half">Percentage</h5>
-                </div>
-                <div style="display:inline-flex; width:100%">
-                  <h5 class="first-half">User Input: </h5>
-                  <h5 class="second-half">{{testingCounts}}</h5>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-      <!-- end row -->
-
-
-    </section>
-    <!-- end widget grid -->
-    <div class="test-controller">
-      <div class="row">
-        <div class="col-lg-3">
-            <div class="chat-footer">
-              <div class="textarea-div">
-                <section>
-                  <label class="input" style="width:100%;margin:0px">
-                    <input style="width:100%" type="text" class="input-lg" placeholder="Write a reply..." id="q_tester">
-                  </label>
-                </section>
+                <h5 class="first-half">Average verbosity: </h5>
+                <h5 class="second-half"> 2 words / turn </h5>
+              </div>
+              <div style="display:inline-flex; width:100%">
+                <h5 class="first-half">Cooperative: </h5>
+                <h5 class="second-half">Percentage</h5>
+              </div>
+              <div style="display:inline-flex; width:100%">
+                <h5 class="first-half">User Input: </h5>
+                <h5 class="second-half">{{testingCounts}}</h5>
               </div>
             </div>
           </div>
-        <div class="col-lg-6" style="text-align: center;">
-          <md-button id ="start_engine" class="md-fab" aria-label="Play">
-            <md-tooltip md-visible="demo.showTooltip">Play</md-tooltip>
-            <md-icon class="fa fa-play fa-2x"></md-icon>
-          </md-button>
-          <md-button id ="stop_engine" class="md-fab" aria-label="Stop">
-            <md-tooltip md-visible="demo.showTooltip">Stop and Reset</md-tooltip>
-            <md-icon class="fa fa-stop fa-2x"></md-icon>
-          </md-button>
         </div>
-        <div class="col-lg-3">
-          <div class="chat-footer">
-            <div class="textarea-div">
-              <section>
-                <label class="input" style="width:100%;margin:0px">
-                  <input style="width:100%" type="text" class="input-lg" placeholder="Write a reply..." id="q_testing">
-                </label>
-              </section>
-            </div>
+      </div>
+
+    </div>
+    <!-- end row -->
+
+
+  </section>
+  <!-- end widget grid -->
+  <div class="test-controller">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="chat-footer" style="border-top: 0px;">
+          <div class="textarea-div">
+            <section>
+              <label class="input" style="width:100%;margin:0px">
+                <input style="width:100%" type="text" class="input-lg" placeholder="Write a reply..." id="q_tester">
+              </label>
+            </section>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" style="text-align: center;">
+        <md-button id ="start_engine" class="md-fab" aria-label="Play">
+          <md-tooltip md-visible="demo.showTooltip">Play</md-tooltip>
+          <md-icon class="fa fa-play fa-2x"></md-icon>
+        </md-button>
+        <md-button id ="stop_engine" class="md-fab" aria-label="Stop">
+          <md-tooltip md-visible="demo.showTooltip">Stop and Reset</md-tooltip>
+          <md-icon class="fa fa-stop fa-2x"></md-icon>
+        </md-button>
+      </div>
+      <div class="col-lg-3">
+        <div class="chat-footer" style="border-top: 0px;">
+          <div class="textarea-div">
+            <section>
+              <label class="input" style="width:100%;margin:0px">
+                <input style="width:100%" type="text" class="input-lg" placeholder="Write a reply..." id="q_testing">
+              </label>
+            </section>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-
-    </div>
+</div>

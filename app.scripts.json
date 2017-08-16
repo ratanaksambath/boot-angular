@@ -38,8 +38,9 @@
       "api-ai-javascript-client",
       "angular-aria",
       "angular-messages",
-      "angular-material"
-
+      "angular-material",
+      "firebase",
+      "angularfire"
 
     ],
     "vendor.ui": [
@@ -167,6 +168,8 @@
     "api-ai-javascript-client": "node_modules/api-ai-javascript/ApiAiClient.js",
     "angular-aria": "node_modules/custom-material/angular-aria.min.js",
     "angular-messages": "node_modules/custom-material/angular-messages.min.js",
-    "angular-material": "node_modules/custom-material/angular-material.min.js"
+    "angular-material": "node_modules/custom-material/angular-material.min.js",
+    "firebase": "bower_components/firebase/firebase.js",
+    "angularfire": "bower_components/angularfire/dist/angularfire.min.js"
   }
 }

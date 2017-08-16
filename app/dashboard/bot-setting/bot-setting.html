@@ -1,98 +1,100 @@
 <div id="content" ng-controller="botSettingCtrl" ng-cloak="">
   <section id="widget-grid" class="">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="panel panel-default">
-          <h3 style="text-align: center">Test Bot</h3>
-          <div class="panel-body status">
-            <div class="chat-body" ng-style="{'height': containerLayout.height}">
-              <h5 class="setting-title">Personality Settings</h5>
-              <div ng-repeat="ability in abilityDraft">
-                <div class="personal-setting" layout="">
-                  <div flex="10" layout="" layout-align="end">
-                    <span class="md-body-1"><h5>{{ability.negativeTitle}}</h5></span>
-                  </div>
-                  <md-slider class="md-primary" style="width:130px;min-width: 10px" flex="" md-discrete="" ng-model="ability.modelName" step="10" min="0" max="100" aria-label="rating">
-                  </md-slider>
-                  <div flex="10" layout="" layout-align="start">
-                    <span class="md-body-1"><h5>{{ability.positiveTitle}}</h5></span>
+    <form ng-submit="submit()" name="settingForm">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="panel panel-default">
+            <h3 style="text-align: center">Step 1</h3>
+            <div class="panel-body status">
+              <div class="chat-body" ng-style="{'height': containerLayout.height}">
+                <h5 class="setting-title">Personality Settings</h5>
+                <div ng-repeat="ability in abilityDraft">
+                  <div class="personal-setting" layout="">
+                    <div flex="10" layout="" layout-align="end">
+                      <span class="md-body-1"><h5 ng-style="{'font-size': ability.negative.fontSize,'font-weight':ability.negative.fontWeight,'transition': 'font 0.3s ease'}">{{ability.negative.name}}</h5></span>
+                    </div>
+                    <md-slider md-discrete class="md-primary" style="width:130px;min-width: 10px" flex="" md-discrete="" ng-model="ability.value" step="25" min="0" max="100" aria-label="rating" ng-change="objectChange(ability)">
+                    </md-slider>
+                    <div flex="10" layout="" layout-align="start">
+                      <span class="md-body-1"><h5 ng-style="{'font-size': ability.positive.fontSize,'font-weight':ability.positive.fontWeight,'transition': 'font 0.3s ease'}" >{{ability.positive.name}}</h5></span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="panel panel-default">
-          <h3 style="text-align: center">Dialogue</h3>
-          <div class="panel-body status">
-            <div class="chat-body" ng-style="{'height': containerLayout.height}">
-              <div layout-gt-md="row">  
-                <md-input-container class="md-block" flex-gt-md>
-                  <label>Test 1</label>
-                  <h5><input ng-model="user.test1"></h5>
-                </md-input-container>
+        <div class="col-md-3">
+          <div class="panel panel-default">
+            <h3 style="text-align: center">Step 2</h3>
+            <div class="panel-body status">
+              <div class="chat-body" ng-style="{'height': containerLayout.height}">
+                <h5 class="setting-title">Process Setting</h5>
+                <div layout-gt-md="row">  
+                  <md-input-container class="md-block" flex-gt-md>
+                    <label>Number of test dialogues</label>
+                    <h5><input ng-model="settingsOption.process.dialogue" type="number" step="1" required></h5>
+                  </md-input-container>
+                </div>
+                <div layout-gt-md="row">  
+                  <md-input-container class="md-block" flex-gt-md>
+                    <label>Number of rounds</label>
+                    <h5><input ng-model="settingsOption.process.round" type="number" step="1" required></h5>
+                  </md-input-container>
+                </div>
+                <div layout-gt-md="row">  
+                  <md-input-container class="md-block" flex-gt-md>
+                    <label>Maximum number of turns per test dialogue</label>
+                    <h5><input ng-model="settingsOption.process.turn" type="number" step="1" required></h5>
+                  </md-input-container>
+                </div>
+                <div layout-gt-md="row">  
+                  <md-input-container class="md-block" flex-gt-md>
+                    <label>Number of queries per test dialogue</label>
+                    <h5><input ng-model="settingsOption.process.query" type="number" step="1" required></h5>
+                  </md-input-container>
+                </div>
               </div>
-              <div layout-gt-md="row">  
-                <md-input-container class="md-block" flex-gt-md>
-                  <label>Test 2</label>
-                  <h5><input ng-model="user.test2"></h5>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                  <label>Postal Code</label>
-                  <h5><input name="postalCode" ng-model="user.postalCode" placeholder="12345"
-                         required ng-pattern="/^[0-9]{5}$/" md-maxlength="5"></h5>
-
-                  <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
-                    <div ng-message="required" class="my-message">You must supply a postal code.</div>
-                    <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
-                      code.
-                    </div>
-                    <div ng-message="md-maxlength" class="my-message">
-                      Don't use the long version silly...we don't need to be that specific...
-                    </div>
-                  </div>
-                </md-input-container>
-              </div>
-              <div layout-gt-md="row">  
-                <md-input-container class="md-block" flex-gt-md>
-                  <label>Test 3</label>
-                  <h5><input ng-model="user.test3"></h5>
-                </md-input-container>
-                <md-input-container>
-                  <label>Enter date</label>
-                  <md-datepicker ng-model="user.submissionDate"></md-datepicker>
-                </md-input-container>
-              </div>
-              <div layout-gt-md="row">
-                <md-input-container class="md-block" flex-gt-sm>
-                  <label>Email</label>
-                  <h5><input name="email" ng-model="user.email"
-                         required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" /></h5>
-
-                  <div class="hint" ng-show="showHints">How can we reach you?</div>
-
-                  <div ng-messages="userForm.email.$error" ng-hide="showHints">
-                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                      Your email must be between 10 and 100 characters long and look like an e-mail address.
-                    </div>
-                  </div>
-                </md-input-container>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <h3 style="text-align: center">Step 3</h3>
+            <div class="panel-body status">
+              <div class="chat-body" ng-style="{'height': containerLayout.height}">
+                <h5 class="setting-title">Point of view settings</h5>
+                <div layout-gt-md="row">  
+                  <md-input-container class="md-block" flex-gt-md>
+                    <label>Title(required)</label>
+                    <h5><input ng-model="settingsOption.title" required></h5>
+                  </md-input-container>
+                </div>
+                <div layout-gt-md="row">  
+                  <md-input-container class="md-block" flex-gt-md>
+                    <h5><label>Save History</label></h5>
+                    <md-select name="type" ng-model="settingsOption">
+                      <md-option ng-repeat="setting in settings" ng-value="setting" style="font-size:initial;">
+                        {{setting.title}}
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
+                </div>
+                <br>
+                <br>
+                <md-content>
+                  <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                    <md-button type="submit" class="md-raised md-primary">Save New</md-button>
+                    <md-button ng-show = "settingsOption.$id" class="md-raised md-primary">Update</md-button>
+                  </section>
+                </md-content>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4 ">
-        <div class="panel panel-default">
-          <h3 style="text-align: center">Bot To Test</h4>
-          <div class="panel-body status">
-            <div class="chat-body ">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </form>
   </section>
+  <pre>{{settings | json}}</pre>
+  <pre>{{settingsOption | json}}</pre>
 </div>

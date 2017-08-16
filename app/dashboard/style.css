@@ -6,19 +6,27 @@
   background-size:initial;
 }
 .yellow.accent-1 {
-  border: 2px solid #c08f26; 
-  border-radius: 6px;
+  list-style-type: none;
+  position: relative;
+  border: 2px solid #c08f26;
+  border-radius: 20px;
   background-color: #febd31;
+  border-bottom-left-radius: 1px;
 }
 .pink-panter.accent-1{
-  border-radius: 6px;
+  list-style-type: none;
+  position:relative;
+  border-radius: 20px;
   border: 2px solid #666;
   background-color: #ff4081;
 }
 .green.accent-1{
+  list-style-type: none;
+  position:relative;
   border: 2px solid #298837;
-  border-radius: 6px;
+  border-radius: 20px;
   background-color: #3ac64e;
+  border-bottom-right-radius: 1px;
 }
 .bot-profile{
   display:inline-block;
@@ -112,7 +120,6 @@ h1.boot-style{
   position: fixed;
   z-index: 901;
   height: 85px;
-  border: 1px solid #CECECE;
   width: 98%;
   display: block;
   bottom: 10px;
@@ -121,12 +128,18 @@ h1.boot-style{
     max-width: 20%;
 }
 .control-board md-slider{
-  margin-left:20px;
-  margin-right:70px;
+  margin-left:100px;
+  margin-right:150px;
 }
 md-slider{
   margin-left:20px;
   margin-right:20px;
+}
+md-slider[md-discrete] .md-sign,
+md-slider[md-discrete] .md-sign:after {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0) scale(1);
+  transform: translate3d(0, 0, 0) scale(1);
 }
 #demo-setting{
   display:none;
@@ -134,11 +147,7 @@ md-slider{
 .chat-footer{
   background:none;
 }
-md-select{
-  margin: 20px 0 15px;
-  text-align: center;
-  font-size:18px;
-}
+
 .smart-style-2.menu-on-top aside#left-panel{
   display:none;
 }
@@ -159,10 +168,16 @@ md-select{
 /*turn take svg animation */
 
 /*testing bot drop down list*/
-.md-select-value {
-    font-size: 23px;
-    font-weight: 600;
+.bot-option md-select{
+  margin: 20px 0 15px;
 }
+
+.bot-option .md-select-value {
+  text-align: center;
+  font-size:18px;
+  font-weight: 600;
+}
+
 /*end testing bot drop down list*/
 
 /*text align film style*/
@@ -216,4 +231,8 @@ md-select{
   stroke: #c08f26;
   stroke-width: 4;
   r: 20;
+}
+
+#header>:first-child, aside{
+  width:0px;
 }

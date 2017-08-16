@@ -9,12 +9,16 @@
  * Main module of the application.
  */
 
+ // init firebase
+firebase.initializeApp(appConfig.firebaseInit);
+
 angular.module('app', [
     'ngSanitize',
     'ngAnimate',
     'restangular',
     'ui.router',
     'ui.bootstrap',
+    'firebase',
 
     // Smartadmin Angular Common Module
     'SmartAdmin',
