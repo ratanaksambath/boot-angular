@@ -18,7 +18,7 @@ appConfig.skins = [
     {name: "smart-style-1",
         logo: "styles/img/logo-white.png",
         class: "btn btn-block btn-xs txt-color-white",
-        style: "background:#3A4558;",
+        style: "background:#3f51b5;",
         label: "Dark Elegance"},
 
     {name: "smart-style-2",

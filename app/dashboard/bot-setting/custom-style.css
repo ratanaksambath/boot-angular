@@ -11,7 +11,7 @@ md-slider.md-primary .md-track.md-track-fill{
   padding: 21px 0;
 }
 .setting-title{
-  font-size:20px;
+  font-size:15px;
   font-weight: bold;
 }
 #main{
@@ -20,4 +20,105 @@ md-slider.md-primary .md-track.md-track-fill{
 
 md-content{
   background-color:inherit;
+}
+/*panel tab body*/
+.setting-body.chat-body{
+  background: none;
+  box-shadow: none;
+}
+/*panel header*/
+.panel-header{
+  height:90px;
+  background-color: #b6bde6;
+  text-align: center;
+}
+.panel-header>h3{
+  margin:0;
+  padding-top:10px;
+  color:#3f51b5;
+}
+.panel-header>h2{
+  margin:0;
+  font-weight:bold;
+  color:#3f51b5;
+}
+.panel-header>label{
+  position: relative;
+  float: right;
+  padding-right: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  color:#3f51b5;
+}
+.panel-header>label:hover{
+  cursor:pointer;
+}
+.col-md-9>md-input-container {
+    width: 100%;
+}
+.col-md-3>button {
+    margin: 5px;
+}
+
+
+
+.setting-body .wrapper {
+  width: 100%;
+  }
+
+.setting-body #vertical-container {
+  height: 260px;
+  width: 100%;
+  }
+
+.setting-body #vertical-container .repeated-item {
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+  height: 40px;
+  padding-top: 10px; }
+
+.setting-body #vertical-container .repeated-item.header {
+  background-color: #3f51b5;
+  color: white;
+  text-align: center;
+  font-weight: bold; }
+
+.setting-body #vertical-container md-content {
+  margin: 16px; }
+
+.setting-body md-virtual-repeat-container {
+  border: solid 1px grey; }
+
+.setting-body .md-virtual-repeat-container .md-virtual-repeat-offsetter div:not(.header) {
+  padding-left: 16px; }
+
+/*saved tab*/
+.selected-year {
+  margin: 0;
+  float: right;
+}
+
+/*hit show on saving*/
+ .hint {
+  /* Position the hint */
+  position: absolute;
+  left: 2px;
+  right: auto;
+  bottom: 7px;
+  /* Copy styles from ng-messages */
+  font-size: 12px;
+  line-height: 14px;
+  transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+  /* Set our own color */
+  color: grey; }
+
+
+
+/*toast color palette*/
+.toast-error .md-toast-content{
+  background-color: rgb(239,83,80) !important;
+}
+
+.toast-info .md-toast-content{
+  background-color: rgb(102,187,106) !important;
 }

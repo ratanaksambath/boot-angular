@@ -1,0 +1,97 @@
+{
+  //If the data is instead split into separate paths, also called denormalization, it can be efficiently downloaded in separate calls, as it is needed.
+
+  // Scenario contains only meta info about each sessions with the setting unique id indicator whether true of false which store under the scenario's unique ID
+
+  "scenarios": {
+    "one": {
+      "title": "api ai small talk testing",
+      "max-duration": 24,
+      "repeat": 5,
+      "timestamp-start": 1503001854,
+      "timestamp-end": 1503002009,
+      "settings": {
+        "test-1": true,
+        "test-2": true
+      }
+    },
+    "two": { ... },
+    "three": { ... },
+
+  },
+  // Epochs are seperate from data we may want to iterate quickly which are organized by scenario ID.
+  "epochs": {
+    "one":{
+      "e1":{
+        "sessions":{
+          "s1":{
+            "numberofdialogues": 100,
+            "maxnumberofturns":10,
+            "timestamp": 1503048452
+          },
+          "s2":{
+            "numberofdialogues": 100,
+            "maxnumberofturns":5,
+            "timestamp": 1503048463
+          }
+        }
+      },
+      "e2": { ... },
+      "e3": { ... },
+      "e4": { ... },
+      "e5": { ... },
+    }
+
+  },
+
+  // dialgues are seperate from data we may want to iterate quickly but still easily paginated and queried, and organized by session id
+  "dialogues":{
+    "s1":{
+      "d1":{
+        "turns": {
+          "t1":{
+            "questions": {
+              "text": "hello",
+              "who": ["client","test","client-user","test,users"],
+              "timestamp": 1503048463
+
+            },
+            "answers": {
+              "text": "hi",
+              "who": ["client","test","client-user","test,users"],
+              "timestamp": 1503048463
+            }
+          }
+        }
+      },
+      "d2": { ... },
+      "d3": { ... },
+
+
+      "d100": {...}
+    }
+
+  },
+
+
+  // Settings will be pick more than once in difference scenario, it better for it to have it own collections. We can have a history were it's been chosen in the test scenario the future. 
+  "settings": {
+    "test-1": {
+      "title": "api ai custom settings",
+      "personality": {
+        "cooperative": 50,
+        "novice": 25,
+        "polite": 50,
+        "verbose": 75
+      }
+    },
+    "test-2": { ... },
+    "test-3": { ... },
+  }
+
+
+
+
+
+
+}

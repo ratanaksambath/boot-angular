@@ -22,7 +22,7 @@ angular.module('app.dashboard', [
             }
         })
         .state('app.bot-setting',{
-            url: '/bot-setting',
+            url: '/setting',
             views: {
                 "content@app":{
                     controller: 'botSettingCtrl',

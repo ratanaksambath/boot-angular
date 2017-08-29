@@ -1,44 +1,44 @@
-<header id="header">
-  <span class="pull-left">
-    <md-menu>
-      <md-button aria-label="Open phone interactions menu" ng-click="ctrl.openMenu($mdMenu, $event)">
-        <i class="fa fa-bars fa-2x" style="width:0px;color:white; padding-top: 15px;
-        padding-left: 15px;" aria-hidden="true"></i>
-      </md-button>
+<header id="header" ng-controller="headerController">
+  <div class="row">
+    <div class="col-md-4 custom-navigation">
+      <span><h2 ng-style="{'font-weight':(setting.current === true) ? 'bold' : '100'}" ui-sref="app.bot-setting">{{setting.text}}</h2></span>
+      <span><h2> / </h2></span>
+      <span><h2 ng-style="{'font-weight':(dashboard.current === true) ? 'bold' : '100'}" ui-sref="app.dashboard"> {{dashboard.text}}</h2></span>
 
-    </md-menu>
-  </span> 
 
-  <span class="boot-center">
-    <a ui-sref="app.dashboard"><p class="boot-style">boot</p></a>
-  </span>
-  <!-- pulled right: nav area -->
-  <span class="pull-right" style="color: white;
-  font-size: 20px;
-  position: relative;
-  bottom: 65px;
-  height: 0px;">
-  <md-switch ng-model="data.cb1" aria-label="Switch 1">
-  </md-switch>
-</span>
-<div class="pull-right" style="display:none">
-
-  <!-- collapse menu button -->
-  <div id="hide-menu" class="btn-header pull-right" style="display:none">
-    <span> <a toggle-menu title="Collapse Menu"><i
-      class="fa fa-reorder"></i></a> </span>
     </div>
-    <!-- end collapse menu -->
 
-    <!-- #MOBILE -->
-    <!-- Top menu profile link : this shows only when top menu is active -->
-
+    <div class="col-md-4 boot-center">
+      <a ui-sref="app.dashboard" class="boot-style">boot</a>
+    </div>
+    <!-- pulled right: nav area -->
+    <div class="col-md-4" style="color: white;
+    font-size: 20px;
+    position: relative;
+    bottom: 65px;
+    height: 0px;">
+    <md-switch ng-model="data.cb1" aria-label="Switch 1">
+    </md-switch>
+    </div>
     
-    <!-- multiple lang dropdown : find all flags in the flags page -->
-    <language-selector></language-selector>
-    <!-- end multiple lang -->
+    <div class="pull-right" style="display:none">
 
-  </div>
+    <!-- collapse menu button -->
+      <div id="hide-menu" class="btn-header pull-right" style="display:none">
+      <span> <a toggle-menu title="Collapse Menu"><i
+        class="fa fa-reorder"></i></a> </span>
+      </div>
+      <!-- end collapse menu -->
+
+      <!-- #MOBILE -->
+      <!-- Top menu profile link : this shows only when top menu is active -->
+
+      
+      <!-- multiple lang dropdown : find all flags in the flags page -->
+      <language-selector></language-selector>
+      <!-- end multiple lang -->
+
+    </div>
   <!-- end pulled right: nav area -->
-
+  </div>
 </header>

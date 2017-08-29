@@ -414,5 +414,5 @@ function streamClientOnResults(results) {
       var uriContent = "data:application/octet-stream," + encodeURIComponent(toBeLog);
       var newWindow = window.open(uriContent, 'logFile');
     };
-    $window.onload = initApi;
+    $window .onload = initApi;
   });
