@@ -1,0 +1,33 @@
+<md-dialog aria-label="options dialog">
+  <md-dialog-content layout-padding>
+    <h2 class="md-title">Create a session</h2>
+    <p>Select a personality and process setting for this session</p>
+    <div layout="row" layout-align="center center">
+      <div flex>
+        <md-select placeholder="Assign to personality" ng-model="testSession.personality" style="min-width: 200px;">
+        <md-option ng-value="personality.title" ng-repeat="personality in personalitySetting.personalitySettingList">{{personality.title}}</md-option>
+        </md-select>
+        <p class="md-caption">You have assigned the personality task to: {{ testSession.personality ? testSession.personality.title : 'No one yet' }}</p>
+      </div>
+      <div flex=10></div>
+      <div flex>
+        <md-select placeholder="Assign to process" ng-model="testSession.process" style="min-width: 200px;">
+        <md-option ng-value="process.title" ng-repeat="process in processSetting.processSettingList">{{process.title}}</md-option>
+        </md-select>
+        <p class="md-caption">You have assigned the process task to: {{ testSession.title ? testSession.process.title : 'No one yet' }}</p>
+      </div>
+      
+    </div>
+    <div layout="column">
+      <md-input-container>
+        <label>Setting Title</label>
+        <input type="text" ng-model="testSession.title">
+      </md-input-container>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <span flex></span>
+    <md-button ng-click="testSession.cancel()">Cancel</md-button>
+    <md-button ng-click="testSession.save()">Okay!</md-button>
+  </md-dialog-actions>
+</md-dialog>

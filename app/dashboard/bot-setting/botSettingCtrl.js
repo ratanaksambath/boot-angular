@@ -1,16 +1,22 @@
 'use-strict';
 angular.module('app.dashboard')
-.controller('botSettingCtrl',function($scope,$window,$interval,$firebaseObject,$firebaseArray,$mdToast){
+.controller('botSettingCtrl',function($scope,$window,$interval,$firebaseObject,$firebaseArray,$mdToast,$mdDialog,$timeout){
+
   const refData = firebase.database().ref();
-  const settingRef = refData.child('settings');
+  const testSettingRef = refData.child('tests');
   const personalitySettingRef = refData.child('settings').child('personalities');
-  var query = settingRef.orderByChild("timestamp").limitToLast(5);
-  $scope.settings = $firebaseArray(query);
+  const processSettingRef = refData.child('settings').child('processes');
+  const testSettingListQuery = personalitySettingRef.orderByChild("timestamp");
+  const personalitySettingListQuery = personalitySettingRef.orderByChild("timestamp");
+  const processSettingListQuery = processSettingRef.orderByChild("timestamp");
+  const lastPersonalityChild = personalitySettingRef.orderByChild("timestamp").limitToLast(1);
+  const lastProcessChild = processSettingRef.orderByChild("timestamp").limitToLast(1);
+  const lastTestChild = testSettingRef.orderByChild("timestamp").limitToLast(1);
   var sliderThumb = $window.document.getElementsByClassName("md-thumb");
+
 
   $scope.showToast = function (message, parentId,className) {
     var el = angular.element(document.getElementById(parentId));
-    
     var toast = $mdToast.simple()
     .content(message)
     .action('OK')
@@ -20,23 +26,132 @@ angular.module('app.dashboard')
     .parent(el);
     $mdToast.show(toast);
   };
-
+  $scope.testSession ={
+    personality:"",
+    process:"",
+    title:"",
+    sessions:[],
+    cancel: function(){
+      $mdDialog.hide();
+    },
+    save: function(){
+      var sessionLenght = this.sessions.length;
+      var sessionId = "session_"+sessionLenght.toString();
+      this.sessions.push({
+        personality: $scope.testSession.personality,
+        process: $scope.testSession.process,
+        title: $scope.testSession.title,
+        timestamp: Date.now()
+      });
+      $mdDialog.hide();
+    }
+  };
+  $scope.testSetting = {
+    lastChild: $firebaseArray(lastTestChild),
+    testSettingList: $firebaseArray(testSettingListQuery),
+    toBeSave:{
+      max_duration_of_test_scenario_run: 1,
+      number_of_epochs:1,
+      bot_to_be_test:"",
+      timestamp: Date.now(),
+      bot_name:""
+    },
+    save: function(){
+      
+      var lastChild = this.lastChild[0].$id;
+      var regex = /[\d|,|.\+]+/g;
+      var matches = lastChild.match(regex);
+      var lastChildId = parseInt(matches[0]);
+      if(this.toBeSave.title == "" || this.toBeSave.title === undefined){
+        console.log("Please Try Again later !!!");
+      }else{
+        var checkTitle;
+        var exist = false;
+        testSettingRef.orderByChild("title").equalTo(this.toBeSave.title).once('value',function(snapshot){
+          if(snapshot.val() != null){
+            exist = true;
+          }else{
+            exist = false;
+          }
+        })
+        if (exist){
+          $scope.showToast('Title already taken ! Please pick another name ','test-toast','toast-error');
+        }else{
+          var id = "test_"+(lastChildId+1).toString();
+          testSettingRef.child(id).set(this.toBeSave);
+          $scope.showToast('Personality Saved as '+this.toBeSave.title,'test-toast','toast-info');
+        }
+        
+      }
+    
+    }
+  }
+  $scope.processSetting = {
+    lastChild: $firebaseArray(lastProcessChild),
+    processSettingList: $firebaseArray(processSettingListQuery),
+    toBeSave:{
+      max_turn_per_dialogue: 1,
+      number_of_dialogues_per_session:1,
+      timestamp: Date.now()
+    },
+    save: function(){
+      
+      var lastChild = this.lastChild[0].$id;
+      var regex = /[\d|,|.\+]+/g;
+      var matches = lastChild.match(regex);
+      var lastChildId = parseInt(matches[0]);
+      if(this.toBeSave.title == "" || this.toBeSave.title === undefined){
+        console.log("Please Try Again later !!!");
+      }else{
+        var checkTitle;
+        var exist = false;
+        processSettingRef.orderByChild("title").equalTo(this.toBeSave.title).once('value',function(snapshot){
+          if(snapshot.val() != null){
+            exist = true;
+          }else{
+            exist = false;
+          }
+        })
+        if (exist){
+          $scope.showToast('Title already taken ! Please pick another name ','process-toast','toast-error');
+        }else{
+          var id = "process_"+(lastChildId+1).toString();
+          processSettingRef.child(id).set(this.toBeSave);
+          $scope.showToast('Personality Saved as '+this.toBeSave.title,'process-toast','toast-info');
+        }
+        
+      }
+    
+    }
+  };
+  $scope.addNewTestSession = function(ev){
+    console.log(ev);
+     $mdDialog.show({
+      templateUrl: 'app/dashboard/bot-setting/session-setting.html',
+      scope: $scope,
+      preserveScope: true,
+      targetEvent: ev
+    });
+  };
 
   $scope.personalitySetting = {
     toBeSave: {
       novice: 50,
       cooperative: 50,
       verbose: 50,
-      polite:50
+      polite:50,
+      timestamp: Date.now()
     },
     buttonDisable: true,
-    personalitySettingList: $firebaseArray(personalitySettingRef),
+    lastChild: $firebaseArray(lastPersonalityChild),
+    personalitySettingList: $firebaseArray(personalitySettingListQuery),
     save: function(){
-      var onComplete = function(){
-        console.log("completed");
-      }
-      var numberOfitems = this.personalitySettingList.length;
-      if((this.toBeSave.title == "" || this.toBeSave.title === undefined) || numberOfitems === 0){
+      
+      var lastChild = this.lastChild[0].$id;
+      var regex = /[\d|,|.\+]+/g;
+      var matches = lastChild.match(regex);
+      var lastChildId = parseInt(matches[0]);
+      if(this.toBeSave.title == "" || this.toBeSave.title === undefined){
         console.log("Please Try Again later !!!");
       }else{
         var checkTitle;
@@ -51,15 +166,15 @@ angular.module('app.dashboard')
         if (exist){
           $scope.showToast('Title already taken ! Please pick another name ','personality-toast','toast-error');
         }else{
-          var id = "personality_"+(numberOfitems+1).toString();
-          personalitySettingRef.child(id).set(this.toBeSave, onComplete);
+          var id = "personality_"+(lastChildId+1).toString();
+          personalitySettingRef.child(id).set(this.toBeSave);
           $scope.showToast('Personality Saved as '+this.toBeSave.title,'personality-toast','toast-info');
         }
         
       }
     
     }
-  }
+  };
 
   $scope.settingsOption={
     personality:{
@@ -71,7 +186,8 @@ angular.module('app.dashboard')
   };
 
   $scope.containerLayout = {
-    height: $window.innerHeight * 50 /100
+    height: $window.innerHeight * 70 /100,
+    settingHeight: $window.innerHeight * 85 /100
   }
   $scope.objectChange = function(e){
 
@@ -122,7 +238,178 @@ angular.module('app.dashboard')
       break;
     }
 
-  }
+  };
+
+  $scope.processLayout = {
+    currentItemIndex: 0,
+    addToEdit: function(e,i){
+    /*
+      - when one of the item child edit button click, enable four action button("duplicate,delete,rename,load")
+    */ 
+      if(e.target.textContent === "EDITING..."){
+        e.target.textContent = "EDIT";
+        angular.forEach($scope.processLayout.savedButtons,function(key,value){
+          $scope.processLayout.savedButtons[value]=true;
+        }) 
+      }else{
+        e.target.textContent = "EDITING..."; 
+        angular.forEach($scope.processLayout.savedButtons,function(key,value){
+          $scope.processLayout.savedButtons[value]=false;
+        });
+        this.currentItemIndex = i;
+      };
+    },
+    clearSavedButtons: function(){
+      angular.forEach(this.savedButtons,function(key,value){
+        this.savedButtons[value]=true;
+      })
+    },
+    savedButtons: {
+      duplicate: true,
+      rename: true,
+      delete: true,
+      load: true,
+    },
+    duplicateAction: function(args){
+
+    },
+    renameAction: function(e){
+      var id = this.currentItemIndex;
+      var list = $scope.processSetting.processSettingList;
+      var item = list[id];
+      var settingName = item.title;
+      var confirm = $mdDialog.prompt()
+        .title('What would you rename your title?')
+        .textContent('Please do not leave your setting name blank')
+        .placeholder('process Settting Name')
+        .ariaLabel('Process name')
+        .initialValue(settingName)
+        .targetEvent(e)
+        .ok('Okay!')
+        .cancel('Cancel');
+
+      $mdDialog.show(confirm).then(function(result) {
+        item.title = result;
+        list.$save(id).then(function(ref) {
+          console.log("success");
+        });
+      }, function() {
+        $scope.status = 'You didn\'t name your dog.';
+      });
+    },
+    deleteAction: function(e){
+      var id = this.currentItemIndex;
+      var confirm = $mdDialog.confirm()
+            .title('Are you sure you would like to delete this process setting?')
+            .textContent('One of your scenarios might have been using this item. Please make sure before you deleted.')
+            .ariaLabel('process Setting Remove')
+            .targetEvent(e)
+            .ok('Please do it!')
+            .cancel('Cancel');
+
+      $mdDialog.show(confirm).then(function() {
+        var list = $scope.processSetting.processSettingList;
+        var item = list[id];
+        list.$remove(item).then(function(ref) {
+          angular.forEach($scope.processLayout.savedButtons,function(key,value){
+            $scope.processLayout.savedButtons[value]=true;
+          })
+          console.log("deleted");
+        });
+      }, function() {
+        console.log("stay remain");
+      });
+
+      
+    },
+  };
+
+
+
+  $scope.personalityLayout = {
+    currentItemIndex: 0,
+    addToEdit: function(e,i){
+    /*
+      - when one of the item child edit button click, enable four action button("duplicate,delete,rename,load")
+    */ 
+      if(e.target.textContent === "EDITING..."){
+        e.target.textContent = "EDIT";
+        angular.forEach($scope.personalityLayout.savedButtons,function(key,value){
+          $scope.personalityLayout.savedButtons[value]=true;
+        }) 
+      }else{
+        e.target.textContent = "EDITING..."; 
+        angular.forEach($scope.personalityLayout.savedButtons,function(key,value){
+          $scope.personalityLayout.savedButtons[value]=false;
+        });
+        this.currentItemIndex = i;
+      };
+    },
+    clearSavedButtons: function(){
+      angular.forEach(this.savedButtons,function(key,value){
+        this.savedButtons[value]=true;
+      })
+    },
+    savedButtons: {
+      duplicate: true,
+      rename: true,
+      delete: true,
+      load: true,
+    },
+    duplicateAction: function(args){
+
+    },
+    renameAction: function(e){
+      var id = this.currentItemIndex;
+      var list = $scope.personalitySetting.personalitySettingList;
+      var item = list[id];
+      var settingName = item.title;
+      var confirm = $mdDialog.prompt()
+        .title('What would you rename your title?')
+        .textContent('Please do not leave your setting name blank')
+        .placeholder('Personality Settting Name')
+        .ariaLabel('Dog name')
+        .initialValue(settingName)
+        .targetEvent(e)
+        .ok('Okay!')
+        .cancel('Cancel');
+
+      $mdDialog.show(confirm).then(function(result) {
+        item.title = result;
+        list.$save(id).then(function(ref) {
+          console.log("success");
+        });
+      }, function() {
+        $scope.status = 'You didn\'t name your dog.';
+      });
+    },
+    deleteAction: function(e){
+      var id = this.currentItemIndex;
+      var confirm = $mdDialog.confirm()
+            .title('Are you sure you would like to delete this personality setting?')
+            .textContent('One of your scenarios might have been using this item. Please make sure before you deleted.')
+            .ariaLabel('Personality Setting Remove')
+            .targetEvent(e)
+            .ok('Please do it!')
+            .cancel('Cancel');
+
+      $mdDialog.show(confirm).then(function() {
+        var list = $scope.personalitySetting.personalitySettingList;
+        var item = list[id];
+        list.$remove(item).then(function(ref) {
+          angular.forEach($scope.personalityLayout.savedButtons,function(key,value){
+            $scope.personalityLayout.savedButtons[value]=true;
+          })
+          console.log("deleted");
+        });
+      }, function() {
+        console.log("stay remain");
+      });
+
+      
+    },
+  };
+
   $scope.abilityDraft = [
     {
       name: 'Novice',
@@ -225,54 +512,24 @@ angular.module('app.dashboard')
     
       
   });
-  $scope.submit = function(){
-    console.log("submit clicked");
-    // var exist = false;
-    // settingRef.orderByChild("title").equalTo($scope.settingsOption.title).once('value',function(snapshot){
-    //   if(snapshot.val() != null){
-    //     exist = true;
-    //   }else{
-    //     exist = false;
-    //   }
-    // })
-    // console.log(exist);
-    // if(exist){
-    //   console.log("title already exist");
-    // }else{
-    //   var newPostKey = settingRef.push().key;
-    //   var updates = {};
-    //   var result = {};
-    //   result['title'] = $scope.settingsOption.title;
-    //   result['personality'] = $scope.settingsOption.personality;
-    //   result['process'] = $scope.settingsOption.process;
-    //   updates[newPostKey] = result;
-    //   return settingRef.update(updates);
-    // }
+
+
+  $scope.user = null;
+  $scope.users = null;
+
+  $scope.loadUsers = function() {
+
+    // Use timeout to simulate a 650ms request.
+    return $timeout(function() {
+
+      $scope.users =  $scope.users  || [
+        { id: 1, name: 'API.ai Small Talk' },
+        { id: 2, name: 'Infosys Confluence Bot' }
+      ];
+
+    }, 650);
   };
-  this.selectedYear = 0;
-  this.years = [];
-  this.items = [];
-  var currentYear = new Date().getFullYear();
-  var monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'];
-  // Build a list of months over 2 years
-  for (var y = currentYear; y >= (currentYear-2); y--) {
-    this.years.push(y);
-    this.items.push({year: y, text: y, header: true});
-    for (var m = 11; m >= 0; m--) {
-      this.items.push({year: y, month: m, text: monthNames[m]});
-    }
-  }
-  // Whenever a different year is selected, scroll to that year
-  $scope.$watch('ctrl.selectedYear', angular.bind(this, function(yearIndex) {
-    var scrollYear = Math.floor(this.topIndex / 13);
-    if(scrollYear !== yearIndex) {
-      this.topIndex = yearIndex * 13;
-    }
-  }));
-  // The selected year should follow the year that is at the top of the scroll container
-  $scope.$watch('ctrl.topIndex', angular.bind(this, function(topIndex) {
-    var scrollYear = Math.floor(topIndex / 13);
-    this.selectedYear = scrollYear;
-  }));  
+
+
+
 });

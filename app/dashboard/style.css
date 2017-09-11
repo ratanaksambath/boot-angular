@@ -30,8 +30,6 @@
 }
 .bot-profile{
   display:inline-block;
-  width:200px;
-  height:247px;
 }
 .bot-profile img{
   width:100%;
@@ -145,8 +143,7 @@ md-slider[md-discrete] .md-sign:after {
 }
 
 .status .who {
-
-  padding: 10px;
+  padding: 7px;
 }
 .turn-number{
   font-size: 18px;
@@ -183,11 +180,11 @@ md-slider[md-discrete] .md-sign:after {
 /*end text align film style*/
 
 .turn svg {
+  background: #b6bde6;
   height: 50px;
   width: 50px;
   position: relative;
   bottom: 10px;
-  background-color: white;
 }
 
 #circle_tester {

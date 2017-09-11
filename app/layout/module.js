@@ -25,6 +25,10 @@ angular.module('app.layout', ['ui.router','ngMaterial'])
   $scope.dashboard = {
     text: "dashboard",
     current: false
+  };
+   $scope.analytic = {
+    text: "analytic",
+    current: false
   }
   var currentStateName = $scope.state.current.name.substring(4);
   switch(currentStateName){
@@ -34,18 +38,29 @@ angular.module('app.layout', ['ui.router','ngMaterial'])
     case "dashboard":
     $scope.dashboard.current = true;
     break;
+    case "dashboard-analytic":
+    $scope.analytic.current = true;
+    break;
   }
   $rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams, options){
     var stateName = toState.name;
     var stateNow = stateName.substring(4);
+    console.log(stateNow);
     switch(stateNow){
       case "bot-setting":
       $scope.setting.current = true;
       $scope.dashboard.current = false;
+      $scope.analytic.current = false;
       break;
       case "dashboard":
       $scope.dashboard.current = true;
       $scope.setting.current = false;
+      $scope.analytic.current = false;
+      break;
+      case "dashboard-analytic":
+      $scope.analytic.current = true;
+      $scope.setting.current = false;
+      $scope.dashboard.current = false;
       break;
     }
   });

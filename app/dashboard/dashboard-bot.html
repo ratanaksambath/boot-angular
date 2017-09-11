@@ -16,17 +16,17 @@
       <div class="col-lg-3 ">
         <div class="panel panel-default">
           <div class="panel-body status">
-            <md-select ng-model="weapon" placeholder="Weapon" class="bot-option md-no-underline">
-              <md-option value="axe">Axe</md-option>
-              <md-option value="sword">Sword</md-option>
-              <md-option value="wand">Wand</md-option>
-            </md-select>
+            <md-toolbar class="md-hue-2" style="background-color: #b6bde6;">
+              <div class="md-toolbar-tools" style="text-align: center;color:#3f51b5">
+                <h2 flex md-truncate>Tester</h2>
+              </div>
+            </md-toolbar>
 
-            <div class="chat-body" ng-style="{'height': layoutHeight}">
+            <div class="chat-body" ng-style="{'height': layoutHeight,'background':'white'}">
               <div class="row">
                 <div class="col center-content">
                   <div class="bot-profile">
-                    <img src="styles/img/avatars/yellowBot.png">
+                    <img src="styles/img/avatars/test.png">
                   </div>
                 </div>
               </div>
@@ -54,8 +54,8 @@
 
         <div class="panel panel-default">
           <div class="panel-body status">
-            <div class="who clearfix" style="border-bottom:0px"></div>
-            <div class="row">
+            <div class="who clearfix" style="border-bottom:0px;background: #b6bde6;"></div>
+            <div class="row" style="margin:0;background: #b6bde6;color: #3f51b5;">
               <div class="col-lg-4">
                 <h4>Round 1 of 100</h4>
                 <h4>Dialogue 1 of 100</h4>
@@ -136,16 +136,26 @@
     <div class="col-lg-3 ">
       <div class="panel panel-default">
         <div class="panel-body status">
-          <md-select ng-model="weapon" ng-init="weapon = apiai" placeholder="Select Bot" class="bot-option md-no-underline">
-            <md-option value="confluence">Infosys Confluence Bot</md-option>
-            <md-option value="apiai">API.AI Small Talk</md-option>
-          </md-select>
-          <div class="chat-body custom-scroll" ng-style="{'height': layoutHeight}">
+          <md-toolbar class="md-hue-2" style="background-color: #b6bde6;">
+            <div class="md-toolbar-tools" style="text-align: center;color:#3f51b5">
+              <h2 flex md-truncate>Client</h2>
+            </div>
+          </md-toolbar>
+          <div class="chat-body" ng-style="{'height': layoutHeight,'background':'white'}">
+              <div class="row">
+                <div class="col center-content">
+                  <div class="bot-profile">
+                    <img src="styles/img/avatars/client.png">
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- <div class="chat-body custom-scroll" ng-style="{'height': layoutHeight}">
             <div class="row">
               <div class="col center-content">
                 <div class="bot-profile">
                   <div ng-show="weapon=='confluence'">
-                    <img src="styles/img/avatars/redBot.png">
+                    <img src="styles/img/avatars/client.png">
                     <div class="col center-content">
                       <h4 style="font-size:15px">Source: {{weapon}}</h4>
                       <h4 style="font-size:15px">Description: Confluence Conference San Francisco</h4>
@@ -162,7 +172,7 @@
                 
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="chat-footer" style="height:143px">
             <div style="text-align: center">
               <div style="display:inline-flex; width:100%">

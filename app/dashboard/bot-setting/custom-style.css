@@ -112,7 +112,13 @@ md-content{
   /* Set our own color */
   color: grey; }
 
-
+/*custom tab*/
+md-pagination-wrapper > md-tab-item:nth-child(3){
+  float:right;
+}
+md-pagination-wrapper{
+  width:100% !important;
+}
 
 /*toast color palette*/
 .toast-error .md-toast-content{
@@ -122,3 +128,21 @@ md-content{
 .toast-info .md-toast-content{
   background-color: rgb(102,187,106) !important;
 }
+/*setting tool bar */
+.saved-tab .row{
+  margin:0px;
+  margin-top: 20px;
+}
+.tool-bar-title{
+  font-weight: bold;
+  font-size: 15px;  
+}
+.tool-bar-sort{
+  font-size: 15px;  
+}
+.tool-bar-description{
+  text-align: center;
+  font-size: 15px;  
+  opacity: 0.5;
+}
+
