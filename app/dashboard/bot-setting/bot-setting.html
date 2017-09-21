@@ -1,4 +1,4 @@
-<div id="content" ng-controller="botSettingCtrl as ctrl" ng-cloak="">
+<div class="bot-setting" id="content" ng-controller="botSettingCtrl as ctrl" ng-cloak="">
   <section id="widget-grid" class="">
     <div ng-submit="submit()" name="settingForm">
       <div class="row">
@@ -9,7 +9,7 @@
               <h2>Personality Setting</h2>
             </div>
             <div id="personality-toast" class="panel-body status" ng-style="{'height': containerLayout.settingHeight}">
-              <md-tabs md-no-pagination md-dynamic-height md-border-bottom>
+              <md-tabs md-selected="personalityLayout.selectedIndex" md-no-pagination md-dynamic-height md-border-bottom>
                 <md-tab label="New">
                   <md-content class="md-padding">
                     <div class="setting-body">
@@ -33,15 +33,22 @@
                           <md-input-container>
                             <label>Setting Name</label>
                             <input name="personalityTitle" ng-model="personalitySetting.toBeSave.title" required>
-                            <div class="hint">Name this new personality settings</div>
+                            <div class="hint">Name this new personality</div>
 
                           </md-input-container>
                         </div>
-                        <div class="col-md-3">
-                          <md-button ng-disabled="personalitySetting.toBeSave.title? false : true" ng-click="personalitySetting.save()" class="md-raised md-primary">Save</md-button>
+                        <div ng-hide="personalityLayout.update" class="col-md-3">
+                          <md-button ng-disabled="personalitySetting.toBeSave.title? false : true" ng-click="personalitySetting.saveNew(personalitySetting.toBeSave)" class="md-raised md-primary">Save</md-button>
                         </div>
+                        <div ng-if="personalityLayout.update" class="col-md-3">
+                          <md-button ng-click="personalitySetting.update(personalitySetting.toBeSave)" class="md-raised md-primary">Update</md-button>
+                        </div>
+                      </form>
+                      <br>
+                      <div ng-hide="!personalityLayout.next" class="row" style="text-align: center">
+                        <md-button ng-click="personalityLayout.ready()" class="md-raised md-primary">Next</md-button>
                       </div>
-                    </form>
+                    </div>
                   </md-content>
                 </md-tab>
                 <md-tab label="Saved">                
@@ -50,23 +57,36 @@
                       <md-toolbar class="md-hue-2">
                         <div class="row">
                           <div class="tool-bar-title col-sm-2">Title</div>
-                          <div class="tool-bar-description col-sm-8">expert/cooperative/verbose/polite</div>
-                          <div class="tool-bar-sort col-sm-2">latest</div>
+                          <div class="tool-bar-description col-sm-8" >
+                          expert / cooperative / verbose / polite </div>
+                          <div class="tool-bar-sort col-sm-2" style="cursor:pointer;text-align: center">
+                            <md-input-container >
+                              <md-select aria-label="sortedList" style="color:white;" ng-model="selectedItem.personality">
+                                <md-option ng-value="item" ng-repeat="item in sortItems.personalityItem">{{item}}</md-option>
+                              </md-select>
+                            </md-input-container>
+                          </div>
                         </div>
                       </md-toolbar>
                       <md-list class="row chat-body" style="background:white;height:70%">
-                        <md-list-item class="secondary-button-padding" ng-repeat="topping in personalitySetting.personalitySettingList | orderBy:'timestamp'">
-                          <div class="tool-bar-title col-sm-2">{{ topping.title }}</div>
-                          <div class="tool-bar-description col-sm-8">{{ topping.novice}} / {{topping.cooperative}} / {{ topping.verbose}} / {{ topping.polite}}</div>
-                          <md-button class="md-secondary" ng-click="personalityLayout.addToEdit($event,$index)">Edit</md-button>
+                        <md-list-item class="secondary-button-padding" ng-repeat="pers in personalitySetting.personalitySettingList | orderBy:selectedItem.personality:true">
+                          <div class="tool-bar-title col-sm-2">{{ pers.title }}</div>
+                          <div class="tool-bar-description col-sm-8">{{ pers.novice}} / {{pers.cooperative}}/ {{ pers.verbose}} / {{ pers.polite}}</div>
+                          <div class="md-secondary">
+                            <div style="width:60%;text-align: right;">
+                              <span style="font-size: 10px;color: grey;" am-time-ago="pers.timestamp"></span>
+                            </div>
+                            <i class="fa fa-edit fa-fw"  ng-click="personalityLayout.addToEdit($event,pers.$id)"  aria-hidden="true"></i>
+                          </div>
                           <md-divider></md-divider>
                         </md-list-item>
+
                       </md-list>
                        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-                        <md-button ng-disabled="personalityLayout.savedButtons.duplicate" class="md-raised md-primary" ng-click="personalityLayout.duplicateAction()">Duplicate</md-button>
+                        <md-button ng-disabled="personalityLayout.savedButtons.duplicate" class="md-raised md-primary" ng-click="personalityLayout.duplicateAction($event)">Duplicate</md-button>
                         <md-button ng-disabled="personalityLayout.savedButtons.rename" class="md-raised md-primary" ng-click="personalityLayout.renameAction($event)">Rename</md-button>
                         <md-button ng-disabled="personalityLayout.savedButtons.delete" class="md-raised md-primary" ng-click="personalityLayout.deleteAction($event)">Delete</md-button>
-                        <md-button ng-disabled="personalityLayout.savedButtons.load" class="md-raised md-primary" ng-click="personalityLayout.loadAction()">Load</md-button>
+                        <md-button ng-disabled="personalityLayout.savedButtons.load" class="md-raised md-primary" ng-click="personalityLayout.modifyAction($event)">Modify</md-button>
                       </section>
                     </md-content>       
                   </div>
@@ -77,7 +97,19 @@
                   </md-content>
                 </md-tab> 
               </md-tabs>
-             
+            </div>
+            <div ng-if="personalityLayout.done" class="overlay" ng-style="{'height': containerLayout.settingHeight}">
+              <div class="setting-content" ng-if="personalityLayout.showOverlayContent">
+                <i ng-click="personalityLayout.done=false" class="fa fa-times overlay-close"></i>
+                <div class="content-wrapper" style="font-size: 20em;top: 20%;">
+                  <i class="fa fa-check-square-o fa-6"  aria-hidden="true"></i>
+                  <h1 style="font-size:40px;font-weight: bold;">{{personalitySetting.toBeSave.title}}</h1>
+                  <h3>Novice: {{personalitySetting.toBeSave.novice}}</h3>
+                  <h3>Cooperative: {{personalitySetting.toBeSave.cooperative}}</h3>
+                  <h3>Verbose: {{personalitySetting.toBeSave.verbose}}</h3>
+                  <h3>Polite: {{personalitySetting.toBeSave.polite}}</h3>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -88,7 +120,7 @@
               <h2>Process Setting</h2>
             </div>
             <div id="process-toast" class="panel-body status" ng-style="{'height': containerLayout.settingHeight}">
-              <md-tabs md-no-pagination md-dynamic-height md-border-bottom>
+              <md-tabs md-selected="processLayout.selectedIndex" md-no-pagination md-dynamic-height md-border-bottom>
                 <md-tab label="New">
                   <md-content class="md-padding">
                     <div class="setting-body" >
@@ -129,16 +161,21 @@
                           <md-input-container>
                             <label>Setting Name</label>
                             <input name="processTitle" ng-model="processSetting.toBeSave.title" required>
-                            <div class="hint">Name this new process settings</div>
+                            <div class="hint">Name this new process</div>
 
                           </md-input-container>
                         </div>
-                        <div class="col-md-3">
-                          <md-button ng-disabled="processSetting.toBeSave.title? false : true" ng-click="processSetting.save()" class="md-raised md-primary">Save</md-button>
+                        <div ng-if="!processLayout.update" class="col-md-3">
+                          <md-button ng-disabled="processSetting.toBeSave.title? false : true" ng-click="processSetting.saveNew(processSetting.toBeSave)" class="md-raised md-primary">Save</md-button>
+                        </div>
+                        <div ng-if="processLayout.update" class="col-md-3">
+                          <md-button ng-click="processSetting.update(processSetting.toBeSave)" class="md-raised md-primary">Update</md-button>
                         </div>
                       </form>
+                      <div ng-hide="!processLayout.next" class="row" style="text-align: center">
+                        <md-button ng-click="processLayout.ready()" class="md-raised md-primary">Next</md-button>
+                      </div>
 
-                      <pre>{{testSetting.toBeSave | json}}</pre>
                     </div>
                   </md-content>
                 </md-tab>
@@ -149,22 +186,33 @@
                         <div class="row">
                           <div class="tool-bar-title col-sm-2">Title</div>
                           <div class="tool-bar-description col-sm-8">max. turns/dialogue per session</div>
-                          <div class="tool-bar-sort col-sm-2">latest</div>
+                          <div class="tool-bar-sort col-sm-2" style="cursor:pointer;text-align: center">
+                            <md-input-container >
+                              <md-select aria-label="sortedList" style="color:white;" ng-model="selectedItem.process">
+                                <md-option ng-value="item" ng-repeat="item in sortItems.processItem">{{item}}</md-option>
+                              </md-select>
+                            </md-input-container>
+                          </div>
                         </div>
                       </md-toolbar>
                       <md-list class="row chat-body" style="background:white;height:70%">
-                        <md-list-item class="secondary-button-padding" ng-repeat="topping in processSetting.processSettingList | orderBy:'timestamp'">
-                          <div class="tool-bar-title col-sm-2">{{ topping.title }}</div>
-                          <div class="tool-bar-description col-sm-8">{{ topping.max_turn_per_dialogue}} / {{topping.number_of_dialogues_per_session}} </div>
-                          <md-button class="md-secondary" ng-click="processLayout.addToEdit($event,$index)">Edit</md-button>
+                        <md-list-item class="secondary-button-padding" ng-repeat="proc in processSetting.processSettingList | orderBy:selectedItem.process:true">
+                          <div class="tool-bar-title col-sm-2">{{ proc.title }}</div>
+                          <div class="tool-bar-description col-sm-8">{{ proc.max_turn_per_dialogue}} / {{proc.number_of_dialogues_per_session}} </div>
+                          <div class="md-secondary">
+                            <div style="width:60%;text-align: right;">
+                              <span style="font-size: 10px;color: grey;" am-time-ago="proc.timestamp"></span>
+                            </div>
+                            <i class="fa fa-edit fa-fw"  ng-click="processLayout.addToEdit($event,proc.$id)"  aria-hidden="true"></i>
+                          </div>
                           <md-divider></md-divider>
                         </md-list-item>
                       </md-list>
                        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-                        <md-button ng-disabled="processLayout.savedButtons.duplicate" class="md-raised md-primary" ng-click="processLayout.duplicateAction()">Duplicate</md-button>
+                        <md-button ng-disabled="processLayout.savedButtons.duplicate" class="md-raised md-primary" ng-click="processLayout.duplicateAction($event)">Duplicate</md-button>
                         <md-button ng-disabled="processLayout.savedButtons.rename" class="md-raised md-primary" ng-click="processLayout.renameAction($event)">Rename</md-button>
                         <md-button ng-disabled="processLayout.savedButtons.delete" class="md-raised md-primary" ng-click="processLayout.deleteAction($event)">Delete</md-button>
-                        <md-button ng-disabled="processLayout.savedButtons.load" class="md-raised md-primary" ng-click="processLayout.loadAction()">Load</md-button>
+                        <md-button ng-disabled="processLayout.savedButtons.load" class="md-raised md-primary" ng-click="processLayout.modifyAction()">Modify</md-button>
                       </section>
                     </md-content>       
                   </div>
@@ -175,6 +223,17 @@
                   </md-content>
                 </md-tab> 
               </md-tabs>      
+            </div>
+            <div ng-if="personalityLayout.done == !true || processLayout.done == true" class="overlay" ng-style="{'height': containerLayout.settingHeight}">
+              <div ng-if="processLayout.showOverlayContent" class="setting-content">
+                <i ng-click="processLayout.done=false" class="fa fa-times overlay-close"></i>
+                <div class="content-wrapper" style="font-size: 20em;top: 20%;">
+                  <i class="fa fa-check-square-o fa-6"  aria-hidden="true"></i>
+                  <h1 style="font-size:40px;font-weight: bold;">{{processSetting.toBeSave.title}}</h1>
+                  <h3>Maximum number of turns per dialogue: {{processSetting.toBeSave.max_turn_per_dialogue}}</h3>
+                  <h3>Maximum number of turns per dialogue: {{processSetting.toBeSave.number_of_dialogues_per_session}}</h3>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -198,7 +257,7 @@
                           <md-button class="md-secondary" ng-click="doSecondaryAction($event)">remove</md-button>
                         </md-list-item>
                         <md-list-item class="secondary-button-padding">
-                          <p ng-click="addNewTestSession($event)" style="cursor:pointer;">+ add a new session by choose a personallity setting and a process setting</p>
+                          <p ng-click="testSession.addNewTestSession($event)" style="cursor:pointer;">+ add a new session by choose a personallity setting and a process setting</p>
                         </md-list-item>
                       </md-list>
                       <div class="personal-setting" layout="" style="text-align: right">
@@ -248,14 +307,17 @@
                           <md-input-container>
                             <label>Setting Name</label>
                             <input name="processTitle" ng-model="testSetting.toBeSave.title" required>
-                            <div class="hint">Name this new process settings</div>
+                            <div class="hint">Name this new scenario</div>
 
                           </md-input-container>
                         </div>
                         <div class="col-md-3">
-                          <md-button ng-disabled="testSetting.toBeSave.title? false : true" ng-click="testSetting.save()" class="md-raised md-primary">Save</md-button>
+                          <md-button ng-disabled="testSetting.toBeSave.title? false : true" ng-click="testSetting.saveNew(testSetting.toBeSave)" class="md-raised md-primary">Save</md-button>
                         </div>
                       </form>
+                      <div ng-hide="!testLayout.next" class="row" style="text-align: center">
+                        <md-button ui-sref="app.dashboard" class="md-raised md-primary">Next</md-button>
+                      </div>
                     </div>
                   </md-content>
                 </md-tab>
@@ -273,7 +335,12 @@
                         <md-list-item class="secondary-button-padding" ng-repeat="topping in processSetting.processSettingList | orderBy:'timestamp'">
                           <div class="tool-bar-title col-sm-2">{{ topping.title }}</div>
                           <div class="tool-bar-description col-sm-8">{{ topping.max_turn_per_dialogue}} / {{topping.number_of_dialogues_per_session}} </div>
-                          <md-button class="md-secondary" ng-click="processLayout.addToEdit($event,$index)">Edit</md-button>
+                          <div class="md-secondary">
+                            <div style="width:60%;text-align: right;">
+                              <span style="font-size: 10px;color: grey;" am-time-ago="pers.timestamp"></span>
+                            </div>
+                            <i class="fa fa-edit fa-fw"  ng-click="personalityLayout.addToEdit($event,pers.$id)"  aria-hidden="true"></i>
+                          </div>
                           <md-divider></md-divider>
                         </md-list-item>
                       </md-list>
@@ -293,6 +360,8 @@
                 </md-tab> 
               </md-tabs>      
             </div>
+            <div ng-if="!processLayout.done" class="overlay" ng-style="{'height': containerLayout.settingHeight}">
+
           </div>
         </div>
       </div>

@@ -1,7 +1,10 @@
 'use strict';
 
 angular.module('app.dashboard')
-.controller('botConsCtrl',function($scope,$window,$interval,$http,$firebaseObject){
+.controller('botConsCtrl',function($scope,$window,$interval,$http,$firebaseObject,$firebaseArray){
+  const refData = firebase.database().ref();
+  const testSettingRef = refData.child('tests');
+  const testSettingListQuery = testSettingRef.orderByChild("timestamp");
   $scope.testDuration = 0;
   $scope.testTurn = 0;
   $scope.testingCounts = 0;
@@ -10,6 +13,18 @@ angular.module('app.dashboard')
   $scope.rating2 = 2;
   $scope.rating3 = 4;
   $scope.layoutHeight = $window.innerHeight * 60 / 100;
+  $scope.newTest = true;
+  $scope.overlayStyle = {
+    height: $window.innerHeight,
+    top: 0,
+    'margin-left': 0,
+    'margin-right': 0,
+    'background-color': 'rgba(182,189,230,1)'
+  };
+  $scope.selectedTest;
+  $scope.testScenarioList = {
+    lists: $firebaseArray(testSettingListQuery),
+  }
   var ENTER_KEY_CODE = 13;
   var testerQueryInput,testingQueryInput,resultDiv, accessTokenInputSmartBot, accessTokenInputGreeterBot,startEngine,stopEngine;
   var testerDot,testingDot;

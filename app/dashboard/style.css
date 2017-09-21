@@ -1,3 +1,7 @@
+.welcome md-select:not([disable]):focus .md-select-value, .welcome md-input-container label ,.welcome md-input-container .md-input {
+  border-bottom-color: white !important; 
+  color:white !important;
+}
 
 .testing-bot{
   height:auto;

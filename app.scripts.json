@@ -40,7 +40,8 @@
       "angular-messages",
       "angular-material",
       "firebase",
-      "angularfire"
+      "angularfire",
+      "angular-moment"
 
     ],
     "vendor.ui": [
@@ -170,6 +171,7 @@
     "angular-messages": "node_modules/custom-material/angular-messages.min.js",
     "angular-material": "node_modules/custom-material/angular-material.min.js",
     "firebase": "bower_components/firebase/firebase.js",
-    "angularfire": "bower_components/angularfire/dist/angularfire.min.js"
+    "angularfire": "bower_components/angularfire/dist/angularfire.min.js",
+    "angular-moment": "bower_components/angular-moment/angular-moment.min.js"
   }
 }

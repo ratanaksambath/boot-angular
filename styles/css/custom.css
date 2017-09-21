@@ -1,3 +1,4 @@
+.welcome md-select:not([disable]):focus .md-select-value,.welcome md-input-container label,.welcome md-input-container .md-input{border-bottom-color:white !important;color:white !important}
 .testing-bot{height:auto;background:url("../../styles/img/avatars/testing.png") no-repeat;background-position:left;background-size:initial}
 .yellow.accent-1{list-style-type:none;position:relative;border:2px solid #c08f26;border-radius:20px;background-color:#febd31;border-bottom-left-radius:1px}
 .pink-panter.accent-1{list-style-type:none;position:relative;border-radius:20px;border:2px solid #666;background-color:#ff4081}
@@ -24,6 +25,10 @@ md-slider{margin-left:20px;margin-right:20px}md-slider[md-discrete] .md-sign,md-
 .custom-navigation>span>h2{margin-top:15px;letter-spacing:0;color:white}.custom-navigation>span>h2:hover{cursor:pointer}
 .custom-navigation>span>h2.current-state{font-weight:bold}.boot-center{text-align:center}
 .boot-style{font-size:41px;font-weight:bold;letter-spacing:14px;color:white}
+.saved-tab .col-sm-8{width:57.666667%}.saved-tab md-input-container{margin:0;bottom:10px}
+.saved-tab .md-secondary-container{margin-left:0;width:26%;bottom:10px}.saved-tab .md-secondary-container>div{width:100%;display:inline-flex}
+.saved-tab .md-secondary-container>div>i{text-align:right;width:40%}.saved-tab md-select:not([disable]):focus .md-select-value{border-bottom-color:white !important;color:white !important}
+md-select .md-select-value{border-bottom-color:white}.saved-tab md-select .md-select-value.md-select-placeholder{color:white}
 .strong{transform:scale(2)}md-slider .md-track.md-track-fill{background-color:rgba(0,0,0,0)}
 md-slider.md-primary .md-track.md-track-fill{background-color:rgba(0,0,0,0)}.personal-setting{padding:21px 0}
 .setting-title{font-size:15px;font-weight:bold}#main{margin-left:0}md-content{background-color:inherit}
@@ -38,6 +43,9 @@ md-slider.md-primary .md-track.md-track-fill{background-color:rgba(0,0,0,0)}.per
 .setting-body .md-virtual-repeat-container .md-virtual-repeat-offsetter div:not(.header){padding-left:16px}
 .selected-year{margin:0;float:right}.hint{position:absolute;left:2px;right:auto;bottom:7px;font-size:12px;line-height:14px;transition:all .3s cubic-bezier(0.55,0,0.55,0.2);color:grey}
 md-pagination-wrapper>md-tab-item:nth-child(3){float:right}md-pagination-wrapper{width:100% !important}
-.toast-error .md-toast-content{background-color:#ef5350 !important}.toast-info .md-toast-content{background-color:#66bb6a !important}
+.bot-setting md-toast{width:100%;height:10%}.bot-setting md-toast .md-toast-content{max-width:100%}
+.toast-error .md-toast-content{background-color:#ef5350 !important;height:100%}.toast-info .md-toast-content{background-color:#66bb6a !important;height:100%}
 .saved-tab .row{margin:0;margin-top:20px}.tool-bar-title{font-weight:bold;font-size:15px}
 .tool-bar-sort{font-size:15px}.tool-bar-description{text-align:center;font-size:15px;opacity:.5}
+.overlay{text-align:center;color:white;position:absolute;top:90px;margin-left:14px;margin-right:14px;left:0;right:0;bottom:0;background-color:rgba(182,189,230,0.5);z-index:9}
+.overlay-close{left:46%;top:5px;position:relative;font-weight:100;font-size:35px}

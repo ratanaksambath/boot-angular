@@ -3,7 +3,8 @@
 angular.module('app.dashboard', [
     'ui.router',
     'ngResource',
-    'ngMaterial'
+    'ngMaterial',
+    'angularMoment'
 ])
 
 .config(function ($stateProvider) {

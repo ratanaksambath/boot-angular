@@ -4,8 +4,48 @@
     You do not need to use widgets if you dont want to. Simply remove
     the <section></section> and you can use wells or panels instead
   -->
+  <div ng-hide="!newTest" class="overlay" ng-style="overlayStyle">
+    <div class="welcome" layout="row" style="position: relative;
+    top: 30%;font-size:20px" layout-wrap>
+      <div flex="30">
+        <h1>Step 1</h1>
+      </div>
+      <div flex="40">
+        <md-select aria-label="sortedList" style="color:white;" ng-model="selectedTest">
+          <md-option ng-value="item" ng-repeat="item in testScenarioList.lists">{{item.title}}</md-option>
+        </md-select>
+      </div>
+      <div flex="30">
+        
+      </div>
+      
+       <div flex="30">
+        <h1>Step 2</h1>
+      </div>
+      <div flex="40">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>This will be the title of the log file (you can overwrite)</label>
+          <input ng-model="testScenarioList.name">
+        </md-input-container>
+      </div>
+      <div flex="30">
+        
+      </div>
+       <div flex="30">
+        <h1>Step 3</h1>
+      </div>
+      <div flex="40">
+        <i style="font-size:10em;" ng-click="newTest = false" class="fa fa-play-circle-o fa-4x"></i>
+      </div>
+      <div flex="30">
+        
+      </div>
+    
+    </div>
 
+  </div>
   <!-- widget grid -->
+
   <section id="widget-grid" class="">
 
     <!-- row -->
@@ -24,7 +64,7 @@
 
             <div class="chat-body" ng-style="{'height': layoutHeight,'background':'white'}">
               <div class="row">
-                <div class="col center-content">
+                <div style="padding-top: 60px;" class="col center-content">
                   <div class="bot-profile">
                     <img src="styles/img/avatars/test.png">
                   </div>
@@ -198,7 +238,7 @@
 
   </section>
   <!-- end widget grid -->
-  <div class="test-controller">
+  <div ng-hide = "newTest" class="test-controller">
     <div class="row">
       <div class="col-lg-3">
         <div class="chat-footer" style="border-top: 0px;">
